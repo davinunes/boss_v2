@@ -1,4 +1,4 @@
-#! /usr/bin/python
+﻿#! /usr/bin/python
 import sys,pexpect
 import getpass
 import time
@@ -14,28 +14,30 @@ password = 'admin'
 
 #=======================================================================
 #defining the actual date to be add to the filename
-data = arrow.now().format('DD-MM-YYYY_HH-mm')
-		
-child = pexpect.spawn ('/usr/bin/ssh -o StrictHostKeyChecking=no '+user+'@'+HOST) #option needs to be a list
+# data = arrow.now().format('DD-MM-YYYY_HH-mm')
+
+child = pexpect.spawn ('/bin/bash -c "/usr/bin/ssh -o StrictHostKeyChecking=no '+user+'@'+HOST+'"') #option needs to be a list
 child.setwinsize(10000,10000)
-child.timeout = 150
+child.maxread=1000
+child.timeout = 5
 child.logfile = sys.stdout #display progress on screen
 
 child.expect('password:') #waiting for password
 child.sendline (password) #sending password
-time.sleep(2)
+time.sleep(1)
 child.expect('OLT8PON>')
+# print(child.before)
+time.sleep(1)
+#go up enable configuration
+child.sendline ('enable \n') #going to ENABLE configuration
+child.expect('OLT8PON#')
+# print(child.before)
+time.sleep(1)
+child.write ('config \n')
 time.sleep(1)
 
-#go up enable configuration
-child.sendline ('enable') #going to ENABLE configuration
-child.interact()
-child.expect('OLT8PON#')
-child.sendline ('config') #going to ENABLE configuration
+time.sleep(1)
 
 
-show ont register-statistics all
 
 
-child.sendline ('interface epon 0/0') #going to ENABLE configuration
-child.expect('#')
