@@ -29,7 +29,7 @@ child.expect('OLT8PON>')
 # print(child.before)
 time.sleep(1)
 #go up enable configuration
-child.sendline ('enable \n') #going to ENABLE configuration
+child.sendline ('logout') #going to ENABLE configuration
 child.expect('OLT8PON#')
 # print(child.before)
 time.sleep(1)
