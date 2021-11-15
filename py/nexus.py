@@ -27,7 +27,7 @@ ftppassword = 'nexus'
 #=======================================================================
 #defining the actual date to be add to the filename
 data = arrow.now().format('DD-MM-YYYY_HH-mm')
-comando = 'copy startup-config ftp://nexus:nexus@192.168.147.41/$(SWITCHNAME)_'+data+'_conf.cfg vrf default'
+comando = 'copy startup-config ftp://nexus:nexus@'+FTPSERVER+'/$(SWITCHNAME)_'+data+'_conf.cfg vrf default'
 
 child = pexpect.spawn ('/usr/bin/ssh '+user+'@'+HOST) #option needs to be a list
 child.timeout = 150
