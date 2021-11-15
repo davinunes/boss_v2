@@ -20,7 +20,7 @@ HOST = sys.argv[1]
 #=======================================================================
 user = 'ilunne'
 password = 'yuk11nn4'
-FTPSERVER = '192.168.147.41'
+FTPSERVER = '172.24.100.3'
 ftpuser = 'nexus'
 ftppassword = 'nexus'
 
