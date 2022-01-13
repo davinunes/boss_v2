@@ -243,8 +243,7 @@ function dbOs($termo){ # Lê os Veiculos da Tabela
 	}
 }
 
-function historico($termo){ # Lê os Veiculos da Tabela
-//	echo $sql;
+function historico($termo){ # obtém dados para atualizar o histórico de OS
 	
 	$sql  ="select ";
 	$sql .="	os.id, ";
