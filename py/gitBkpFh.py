@@ -21,9 +21,9 @@ OLT = sys.argv[2]
 #=======================================================================
 user = 'GEPON'
 password = 'GEPON'
-FTPSERVER = '143.208.72.6'
-ftpuser = 'ftp'
-ftppassword = 'asterix'
+FTPSERVER = '172.24.100.3'
+ftpuser = 'git'
+ftppassword = 'git'
 ftpdirectory = ''
 #=======================================================================
 
