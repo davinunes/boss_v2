@@ -7,14 +7,14 @@ from paramiko import SSHClient
 import paramiko
 
 import sys
-COMANDO = "show configuration | display set | no-more"
+COMANDO = "display current-configuration | no-more"
  
 class SSH:
     def __init__(self):
         self.ssh = SSHClient()
         self.ssh.load_system_host_keys()
         self.ssh.set_missing_host_key_policy(paramiko.AutoAddPolicy())
-        self.ssh.connect(hostname='10.111.114.2',port='22',username='ilunne',password='yuk11nn4')
+        self.ssh.connect(hostname='10.61.61.2',port='1822',username='ilunne',password='MinhaSuperSenha@131377')
  
     def exec_cmd(self,cmd):
         stdin,stdout,stderr = self.ssh.exec_command(cmd)
