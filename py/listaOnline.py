@@ -46,7 +46,7 @@ child.expect('#')
 child.sendline ('cd onu')
 
 
-child.sendline ('show discovery slot all pon all ')
+child.sendline ('show authorization slot '+SLOT+' pon '+PONN)
 child.logfile_read = sys.stdout
 
 child.sendline ('cd .')
