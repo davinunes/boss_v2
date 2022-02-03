@@ -1,7 +1,7 @@
 <head>
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Provisionar ONU Fiberhome</title>
+  <title>Listar ONU Online/Offline Fiberhome</title>
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.8.2/css/bulma.min.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
@@ -114,9 +114,84 @@ box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
 </style>
 
 
+<div class="col s12">
+    <h2 class="header">Lista ONU</h2>
+    <div class="card horizontal">
 
+      <div class="card-stacked">
+        <div class="card-content">
+          <p>Selecione OLT, SLOT e PON e clique em Pesquisar</p>
 
+<div class='row'>
+	<div class="input-field col s3">
+	<select id='OLT' name='OLT'>
+	  <option value="172.21.2.2" selected>Sede</option>
+	  <option value="10.168.169.2">Incra 8</option>
+	  <option value="172.21.1.2">Vendinha</option>
+	  <option value="172.21.3.2">Monte Alto</option>
+	  <option value="10.169.66.10">Morada dos Pássaros</option>
+	  <option value="10.169.67.2">Padre Lúcio</option>
+	</select>
+	<label>OLT</label>
+	</div>
+	
+	<div class="input-field col s2">
+	<select id='SLOT' name='SLOT'>
+	  <option value="1" selected>1</option>
+	  <option value="2">2</option>
+	  <option value="3">3</option>
+	  <option value="4">4</option>
+	  <option value="5">5</option>
+	  <option value="6">6</option>
+	  <option value="7">7</option>
+	  <option value="8">8</option>
+	  <option value="9" disabled>9</option>
+	  <option value="10" disabled>10</option>
+	  <option value="11">11</option>
+	  <option value="12">12</option>
+	  <option value="13">13</option>
+	  <option value="14">14</option>
+	  <option value="15">15</option>
+	  <option value="16">16</option>
+	</select>
+	<label>SLOT</label>
+	</div>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+	<div class="input-field col s2">
+	<select id='PONN' name='PONN'>
+	  <option value="1" selected>1</option>
+	  <option value="2">2</option>
+	  <option value="3">3</option>
+	  <option value="4">4</option>
+	  <option value="5">5</option>
+	  <option value="6">6</option>
+	  <option value="7">7</option>
+	  <option value="8">8</option>
+	  <option value="9">9</option>
+	  <option value="10">10</option>
+	  <option value="11">11</option>
+	  <option value="12">12</option>
+	  <option value="13">13</option>
+	  <option value="14">14</option>
+	  <option value="15">15</option>
+	  <option value="16">16</option>
+	</select>
+	<label>PON</label>
+	</div>
+	
+	<div class="input-field col s2">
+		<a class="waves-effect waves-light btn orange">buscar/atualizar</a>
+	</div>
+	
+</div>
+
+        </div>
+
+      </div>
+    </div>
+  </div>
+
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+
 <script src="listarOnline.js?<?php echo time(); ?>"></script>
