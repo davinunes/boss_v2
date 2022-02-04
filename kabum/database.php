@@ -1,12 +1,7 @@
 <?php
 
 
-define('DB_HOSTNAME', 'localhost');
-define('DB_DATABASE', 'kab');
-define('DB_USERNAME', 'boss');
-define('DB_PASSWORD', 'ilunne');
-define('DB_PREFIX', '');
-define('DB_CHARSET', 'utf8');
+include "../key.php";
 
 function DBConnect(){ # Abre Conexão com Database
 	$link = @mysqli_connect(DB_HOSTNAME, DB_USERNAME, DB_PASSWORD, DB_DATABASE) or die(mysqli_connect_error());
