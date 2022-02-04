@@ -49,6 +49,10 @@ child.sendline ('cd onu')
 child.sendline ('show authorization slot '+SLOT+' pon '+PONN)
 child.logfile_read = sys.stdout
 
+child.sendline ('\n')
+child.sendline ('\n')
+child.sendline ('\n')
+child.sendline ('\n')
 child.sendline ('cd .')
 child.sendline ('cd .')
 child.sendline ('cd .')

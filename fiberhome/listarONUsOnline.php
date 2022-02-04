@@ -180,7 +180,7 @@ box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
 	</div>
 	
 	<div class="input-field col s2">
-		<a id='btn' class="waves-effect waves-light btn orange">buscar/atualizar</a>
+		<a id='btn' class="waves-effect waves-light btn orange">Atualizar</a>
 	</div>
 	
 </div>

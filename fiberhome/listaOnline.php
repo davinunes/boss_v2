@@ -5,6 +5,9 @@ $command = '/usr/bin/python /var/www/ilunne/boss/py/listaOnline.py '.$_GET[OLT].
 
 $output = shell_exec($command);
 
+echo "<pre>";
+var_dump($output);
+echo "</pre>";
 $output = explode("--- -------------- -- --- --- ------------ ---------- ----------------------------------------", $output);
 $output = explode("Command execute success.", $output[1]);
 $output = explode("\n", $output[0]);

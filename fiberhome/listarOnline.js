@@ -3,15 +3,20 @@ $(document).ready(function(){
 });
 
 $(document).on('click', '#btn', function(){
+	
+	$('#btn').html('<div class="preloader-wrapper small active">      <div class="spinner-layer spinner-blue">        <div class="circle-clipper left">          <div class="circle"></div>        </div><div class="gap-patch">          <div class="circle"></div>        </div><div class="circle-clipper right">          <div class="circle"></div>        </div>      </div>      <div class="spinner-layer spinner-red">        <div class="circle-clipper left">          <div class="circle"></div>        </div><div class="gap-patch">          <div class="circle"></div>        </div><div class="circle-clipper right">          <div class="circle"></div>        </div>      </div>      <div class="spinner-layer spinner-yellow">        <div class="circle-clipper left">          <div class="circle"></div>        </div><div class="gap-patch">          <div class="circle"></div>        </div><div class="circle-clipper right">          <div class="circle"></div>        </div>      </div>      <div class="spinner-layer spinner-green">        <div class="circle-clipper left">          <div class="circle"></div>        </div><div class="gap-patch">          <div class="circle"></div>        </div><div class="circle-clipper right">          <div class="circle"></div>        </div>      </div>    </div>');
+	
+	
     olt = $("#OLT").val();
-	pon = $("#SLOT").val();
-	slot = $("#PONN").val();
+	slot = $("#SLOT").val();
+	pon = $("#PONN").val();
 	
 	url = 'listaOnline.php?OLT='+olt+'&SLOT='+slot+'&PONN='+pon;
 	
 	$.post(url, "", function(data){
 	   
 		$("#lista").html(data);
+		$('#btn').html('Atualizar');
 
 	});
 	console.log(url);
