@@ -41,16 +41,20 @@ $(document).on('change', 'select#OLT', function(){
 			if(data[op] == "----" || op == 9 || op == 10){
 				console.log(data[op]);
 				$(this).attr('disabled','disabled');
-				$(this).hide();
-				$(this).addClass("hide");
-				$('select').formSelect();
+				$(this).addClass('hide');
 			}else{
 				$(this).removeAttr('disabled');
-				$('select').formSelect();
-				$(this).attr('selected','selected');
+				$(this).removeClass('hide');
 			}
 			
-		})		
+		});
+		$.each($("select#SLOT option"),function( index, value ){
+			let op = $(this).attr('disabled');
+			if(typeof op == undefined){
+				$(this).attr('selected','selected');
+			}
+		});
+		$('select').formSelect();
 
 	$('#slt').html('Slot');
 	},"json");
