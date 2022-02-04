@@ -20,9 +20,6 @@ PASSWORD = 'GEPON'
 ENPASSWORD = 'GEPON'
 
 HOST = sys.argv[1]
-SLOT = sys.argv[2]
-PONN = sys.argv[3]
-
 
 child = pexpect.spawn ('telnet '+HOST) #option needs to be a list
 child.setwinsize(10000,10000)
@@ -41,12 +38,7 @@ child.sendline (PASSWORD) #sending enable password
 
 child.expect('#')
 
-
-
-child.sendline ('cd onu')
-
-
-child.sendline ('show authorization slot '+SLOT+' pon '+PONN)
+child.sendline ('show version')
 child.logfile_read = sys.stdout
 
 child.sendline ('\n')
