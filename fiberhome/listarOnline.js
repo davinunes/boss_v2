@@ -41,4 +41,8 @@ $(document).on('change', 'select#OLT', function(){
 	});
 	console.log(url);
 });
+$(document).on('change', 'select#SLOT', function(){
+	console.log($(this)[0].text.split("[")[1].split("]"));
+});
 
+// 
