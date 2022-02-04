@@ -123,7 +123,7 @@ box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
           <p>Selecione OLT, SLOT e PON e clique em Pesquisar</p>
 
 <div class='row'>
-	<div class="input-field col s3">
+	<div class="input-field col s4">
 	<select id='OLT' name='OLT'>
 	  <option value="172.21.2.2" selected>Sede</option>
 	  <option value="10.168.169.2">Incra 8</option>
@@ -180,9 +180,16 @@ box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
 	</div>
 	
 	<div class="input-field col s2">
-		<a id='btn' class="waves-effect waves-light btn orange">Atualizar</a>
-		<a id='slt' class="waves-effect waves-light btn orange">Slot</a>
+		<a id='slt' class="waves-effect waves-light btn-small blue">slot</a>
+		
+		
 	</div>
+	<div class="input-field col s2">
+		
+		<a id='btn' class="waves-effect waves-light btn-small orange">Atualizar</a>
+		
+	</div>
+	
 	
 </div>
 
@@ -193,8 +200,8 @@ box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
   </div>
 
 <div class="row">
-    <div class="col s12 m8">
-      <div class="card-panel teal">
+    <div class="col s12 m7 ">
+      <div class="card-panel ">
         <span id='lista' class="white-text">Aguardando escolha.
         </span>
       </div>

@@ -10,9 +10,9 @@ $output = explode("--- -------------- -- --- --- ------------ ---------- -------
 $output = explode("Command execute success.", $output[1]);
 $output = explode("\n", $output[0]);
 
-echo "<pre>";
-var_dump($output);
-echo "</pre>";
+// echo "<pre>";
+// var_dump($output);
+// echo "</pre>";
 
 include "database.php";
 
@@ -42,17 +42,40 @@ foreach($output as $a){
 // var_dump($onu);
 echo "<table class='responsive-table'>\n";
 echo "	<thead>";
+echo "	<tr>
+			<th>Num</th>
+			<th>Stat</th>
+			<th>Mac</th>
+			<th>Vlan</th>
+			<th>Perfil</th>
+			<th>Contrato</th>
+			<th>Login</th>
+		</tr>";
 echo "	</thead>";
 echo "  	<tbody>";
 
 foreach($onu as $t){
-	echo "<tr>
+	if($t[ost] == "up"){
+		$classe = 'green lighten-5';
+	}else{
+		$classe = 'grey lighten-4';
+	}
+	
+	if($t[ativo] == "I"){
+		$ativo = 'red-text text-darken-4';
+		$cancelado = "CONTRATO CANCELADO";
+	}else{
+		$ativo = '';
+		$cancelado = "";
+	}
+	
+	echo "<tr class='$classe $ativo' >
 	<td class=''>$t[num]</td>
 	<td>$t[ost]</td>
 	<td>$t[mac]</td>
 	<td>$t[vlan]</td>
 	<td>$t[perfil]</td>
-	<td>$t[ativo]</td>
+	<td>$cancelado</td>
 	<td>$t[login]</td>
 	</tr>";
 }

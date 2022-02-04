@@ -37,24 +37,14 @@ child.expect('Password:') #waiting enable password
 child.sendline (PASSWORD) #sending enable password 
 
 child.expect('#')
-
+child.sendline ('cd service')
+child.expect('#')
+child.sendline ('terminal length 0')
+child.expect('#')
+child.sendline ('cd ..')
 child.sendline ('show version')
 child.logfile_read = sys.stdout
 
-child.sendline ('\n')
-child.sendline ('\n')
-child.sendline ('\n')
-child.sendline ('\n')
-child.sendline ('\n')
-child.sendline ('\n')
-child.sendline ('\n')
-child.sendline ('\n')
-child.sendline ('\n')
-child.sendline ('\n')
-child.sendline ('cd .')
-child.sendline ('cd .')
-child.sendline ('cd .')
-child.sendline ('cd .')
 child.sendline ('exit')
 child.expect('>')
 child.sendline ('exit')

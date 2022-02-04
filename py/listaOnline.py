@@ -38,30 +38,19 @@ time.sleep(1)
 child.sendline ('enable') #going to ENABLE configuration
 child.expect('Password:') #waiting enable password
 child.sendline (PASSWORD) #sending enable password 
-
 child.expect('#')
-
-
-
+child.sendline ('cd service')
+child.expect('#')
+child.sendline ('terminal length 0')
+child.expect('#')
+child.sendline ('cd ..')
+child.expect('#')
 child.sendline ('cd onu')
 
 
 child.sendline ('show authorization slot '+SLOT+' pon '+PONN)
 child.logfile_read = sys.stdout
 
-child.sendline ('\n')
-child.sendline ('\n')
-child.sendline ('\n')
-child.sendline ('\n')
-child.sendline ('\n')
-child.sendline ('\n')
-child.sendline ('\n')
-child.sendline ('\n')
-child.sendline ('\n')
-child.sendline ('\n')
-child.sendline ('cd .')
-child.sendline ('cd .')
-child.sendline ('cd .')
 child.sendline ('cd .')
 child.sendline ('exit')
 child.expect('>')

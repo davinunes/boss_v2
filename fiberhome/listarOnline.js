@@ -1,5 +1,7 @@
 $(document).ready(function(){
     $('select').formSelect();
+	$('select#OLT').change();
+	
 });
 
 $(document).on('click', '#btn', function(){
@@ -21,3 +23,37 @@ $(document).on('click', '#btn', function(){
 	});
 	console.log(url);
 });
+$(document).on('change', 'select#OLT', function(){
+	
+	$('#slt').html('<div class="preloader-wrapper small active">      <div class="spinner-layer spinner-blue">        <div class="circle-clipper left">          <div class="circle"></div>        </div><div class="gap-patch">          <div class="circle"></div>        </div><div class="circle-clipper right">          <div class="circle"></div>        </div>      </div>      <div class="spinner-layer spinner-red">        <div class="circle-clipper left">          <div class="circle"></div>        </div><div class="gap-patch">          <div class="circle"></div>        </div><div class="circle-clipper right">          <div class="circle"></div>        </div>      </div>      <div class="spinner-layer spinner-yellow">        <div class="circle-clipper left">          <div class="circle"></div>        </div><div class="gap-patch">          <div class="circle"></div>        </div><div class="circle-clipper right">          <div class="circle"></div>        </div>      </div>      <div class="spinner-layer spinner-green">        <div class="circle-clipper left">          <div class="circle"></div>        </div><div class="gap-patch">          <div class="circle"></div>        </div><div class="circle-clipper right">          <div class="circle"></div>        </div>      </div>    </div>');
+	
+	
+    olt = $("#OLT").val();
+	
+	url = 'slotsAtivos.php?OLT='+olt;
+	
+	$.post(url, "", function(data){
+		// console.log(data);
+		// console.log(data[9]);
+		
+		$.each($("select#SLOT option"),function( index, value ){
+			let op = $(this).val();
+			if(data[op] == "----" || op == 9 || op == 10){
+				console.log(data[op]);
+				$(this).attr('disabled','disabled');
+				$(this).hide();
+				$(this).addClass("hide");
+				$('select').formSelect();
+			}else{
+				$(this).removeAttr('disabled');
+				$('select').formSelect();
+				$(this).attr('selected','selected');
+			}
+			
+		})		
+
+	$('#slt').html('Slot');
+	},"json");
+	console.log(url);
+});
+
