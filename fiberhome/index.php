@@ -194,7 +194,8 @@ if($dados_da_os1[0][id_login]){
 		echo '<a transmissor="8" vlan="3041" olt="10.168.169.2" class="btn-mini waves-effect waves-light buscar">Incra8</a> ';
 		echo '<a transmissor="7" vlan="3042" olt="172.21.1.2" class="btn-mini waves-effect waves-light buscar">Vendinha</a> ';
 		echo '<a transmissor="9" vlan="3044" olt="172.21.3.2" class="btn-mini waves-effect waves-light buscar">Monte Alto</a> ';
-		echo '<a transmissor="10" vlan="3046" olt="10.169.66.10" class="btn-mini waves-effect waves-light buscar">Morada dos Passaros</a> ';
+		echo '<a transmissor="11" vlan="3048" olt="10.169.67.2" class="btn-mini waves-effect waves-light buscar">Padre Lucio</a> ';
+		echo '<a transmissor="10" vlan="3046" olt="10.169.66.10" class="btn-mini waves-effect waves-light buscar">Dos Pássaros</a> ';
 		
 	echo '</div>';
 	
