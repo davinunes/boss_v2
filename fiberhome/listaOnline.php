@@ -40,16 +40,16 @@ foreach($output as $a){
 	
 }
 // var_dump($onu);
-echo "<table class='responsive-table'>\n";
+echo "<table class='responsive-table centered highlight'>\n";
 echo "	<thead>";
 echo "	<tr>
-			<th>Num</th>
-			<th>Stat</th>
+			<th>Login</th>
 			<th>Mac</th>
+			<th>Obs</th>
 			<th>Vlan</th>
 			<th>Perfil</th>
-			<th>Contrato</th>
-			<th>Login</th>
+			<th>Stat</th>
+			<th>Num</th>
 		</tr>";
 echo "	</thead>";
 echo "  	<tbody>";
@@ -70,13 +70,13 @@ foreach($onu as $t){
 	}
 	
 	echo "<tr class='$classe $ativo' >
-	<td class=''>$t[num]</td>
-	<td>$t[ost]</td>
+	<td>$t[login]</td>
 	<td>$t[mac]</td>
+	<td>$cancelado</td>
 	<td>$t[vlan]</td>
 	<td>$t[perfil]</td>
-	<td>$cancelado</td>
-	<td>$t[login]</td>
+	<td>$t[ost]</td>
+	<td>$t[num]</td>
 	</tr>";
 }
 

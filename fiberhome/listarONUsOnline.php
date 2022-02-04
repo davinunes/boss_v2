@@ -115,7 +115,7 @@ box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
 
 
 <div class="col s12">
-    <h2 class="header">Lista ONU</h2>
+    <h4 class="header">Lista ONU</h4>
     <div class="card horizontal">
 
       <div class="card-stacked">
@@ -123,7 +123,7 @@ box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
           <p>Selecione OLT, SLOT e PON e clique em Pesquisar</p>
 
 <div class='row'>
-	<div class="input-field col s4">
+	<div class="input-field col s6 m6">
 	<select id='OLT' name='OLT'>
 	  <option value="172.21.2.2" selected>Sede</option>
 	  <option value="10.168.169.2">Incra 8</option>
@@ -135,7 +135,7 @@ box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
 	<label>OLT</label>
 	</div>
 	
-	<div class="input-field col s2">
+	<div class="input-field col s3 m2">
 	<select id='SLOT' name='SLOT'>
 	  <option value="1" selected>1</option>
 	  <option value="2">2</option>
@@ -157,7 +157,7 @@ box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
 	<label>SLOT</label>
 	</div>
 
-	<div class="input-field col s2">
+	<div class="input-field col s3 m2">
 	<select id='PONN' name='PONN'>
 	  <option value="1" selected>1</option>
 	  <option value="2">2</option>
@@ -179,14 +179,14 @@ box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
 	<label>PON</label>
 	</div>
 	
-	<div class="input-field col s2">
+	<div class="input-field col s6 m1">
 		<a id='slt' class="waves-effect waves-light btn-small blue">slot</a>
 		
 		
 	</div>
-	<div class="input-field col s2">
+	<div class="input-field col s6 m1">
 		
-		<a id='btn' class="waves-effect waves-light btn-small orange">Atualizar</a>
+		<a id='btn' class="waves-effect waves-light btn-small orange right">Atualizar</a>
 		
 	</div>
 	
