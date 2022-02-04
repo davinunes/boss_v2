@@ -180,7 +180,7 @@ box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
 	</div>
 	
 	<div class="input-field col s2">
-		<a class="waves-effect waves-light btn orange">buscar/atualizar</a>
+		<a id='btn' class="waves-effect waves-light btn orange">buscar/atualizar</a>
 	</div>
 	
 </div>
@@ -190,6 +190,15 @@ box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
       </div>
     </div>
   </div>
+
+<div class="row">
+    <div class="col s12 m8">
+      <div class="card-panel teal">
+        <span id='lista' class="white-text">Aguardando escolha.
+        </span>
+      </div>
+    </div>
+</div>
 
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
