@@ -20,7 +20,15 @@ foreach($output as $a){
 	$slot[$linha[1]] = $linha[2];
 	
 }
-echo json_encode($slot);
+
+foreach($slot as $k => $v){
+	if($v != "----" and $k != 9 and $k != 10){
+		echo "<option value='$k'>$k :: [$v]</option>\n";
+	}
+}
+
+
+// echo json_encode($slot);
 // var_dump($slot);
 // echo "</pre>";
 

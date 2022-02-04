@@ -33,31 +33,12 @@ $(document).on('change', 'select#OLT', function(){
 	url = 'slotsAtivos.php?OLT='+olt;
 	
 	$.post(url, "", function(data){
-		// console.log(data);
-		// console.log(data[9]);
-		
-		$.each($("select#SLOT option"),function( index, value ){
-			let op = $(this).val();
-			if(data[op] == "----" || op == 9 || op == 10){
-				console.log(data[op]);
-				$(this).attr('disabled','disabled');
-				$(this).addClass('hide');
-			}else{
-				$(this).removeAttr('disabled');
-				$(this).removeClass('hide');
-			}
-			
-		});
-		$.each($("select#SLOT option"),function( index, value ){
-			let op = $(this).attr('disabled');
-			if(typeof op == undefined){
-				$(this).attr('selected','selected');
-			}
-		});
+
+		$("#SLOT").html(data);
 		$('select').formSelect();
 
-	$('#slt').html('Slot');
-	},"json");
+		$('#slt').html('Slot');
+	});
 	console.log(url);
 });
 
