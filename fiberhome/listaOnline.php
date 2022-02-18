@@ -2,11 +2,30 @@
 // var_dump($_GET);
 
 $command = '/usr/bin/python /var/www/ilunne/boss/py/listaOnline.py '.$_GET[OLT].' '.$_GET[SLOT].' '.$_GET[PONN];
+$command = '/usr/bin/python /var/www/ilunne/boss/py/listaTodasONUonline.py '.$_GET[OLT];
+
 
 $output = shell_exec($command);
 
 
-$output = explode("--- -------------- -- --- --- ------------ ---------- ----------------------------------------", $output);
+// Limpeza do TXT
+$output = explode("A: Authorized  P: Preauthorized  R: System Reserved", $output);
+$output = explode("Command execute success.", $output[1]);
+$output = explode("-----  ONU Auth Table, ", $output[0]);
+
+// Vamos montar um Array com os dados
+foreach($output as $a){
+	if(strlen($a) < 10) continue;
+	
+	$a = explode("--- -------------- -- --- --- ------------ ---------- ----------------------------------------", $a);
+	$spi = $a[0];
+	$lista = $a[1];
+	var_dump($spi);
+}
+ 
+ exit;
+
+$output = explode("A: Authorized  P: Preauthorized  R: System Reserved", $output);
 $output = explode("Command execute success.", $output[1]);
 $output = explode("\n", $output[0]);
 
@@ -19,6 +38,7 @@ include "database.php";
 
 foreach($output as $a){
 	if(strlen($a) < 10) continue;
+	// Se eu encontrar a palavra continue na linha, deixei de precisar dessa função com o comando terminal lenght 0 na olt
 	if(strpos($a, 'continue') !== false) continue;
 	$linha = preg_replace('/\\s\\s+/', ' ', $a);
 	$linha = explode(" ", $linha);
