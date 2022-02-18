@@ -33,9 +33,7 @@ foreach($output as $a){
 	// É hora de trabalhar a lista de ONU
 	$lista = explode("\n", $lista);
 	
-	$onu[slot] = $slot;
-	$onu[$slot][pon]= $pon;
-	$onu[$slot][$pon][qtd] = $qtd;
+	$onu[$slot][card] = $slot;
 	
 	foreach($lista as $a){
 		if(strlen($a) < 10) continue;
@@ -55,7 +53,9 @@ foreach($output as $a){
 		$item[vlan] = $ixc[vlan];
 		$item[ativo] = $status;
 		
-		$onu[$slot][$pon][lista][] = $item;
+		$onu[$slot][pons][$pon][porta]= $pon;
+		$onu[$slot][pons][$pon][quantidade]= $qtd;
+		$onu[$slot][pons][$pon][lista][] = $item;
 	}
 }
 // Pronto, agora eu tenho todos os dados organizados. Preciso exibir isso como uma tabela.
@@ -80,9 +80,12 @@ echo "  	<tbody>";
 
 foreach($onu as $card){
 	//Crio uma linha separadora ou Crio uma coluna esticada
-	echo "<tr class='teal'><td colspan='8'>Card X</td></tr>\n";
-	foreach($card as $porta){
-		echo "\t<tr><td colspan='8'>Porta X</td></tr>\n";
+	echo "<tr class='deep-purple lighten-3'><td colspan='10'>Card $card[card]</td></tr>\n";
+
+	foreach($card[pons] as $porta){
+		$altura = $porta[quantidade] +1;
+		echo "\t<tr class='indigo lighten-4'><td colspan='10'>Porta $porta[porta] com $porta[quantidade]</td></tr>\n";
+		echo "<td class='indigo lighten-4' rowspan='$altura'></td>";
 		foreach($porta[lista] as $ont){
 			if($ont[ost] == "up"){
 				$classe = 'green lighten-5';
