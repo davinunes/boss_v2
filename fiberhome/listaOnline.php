@@ -90,12 +90,14 @@ echo "  	<tbody>";
 
 foreach($onu as $card){
 	//Crio uma linha separadora ou Crio uma coluna esticada
-	echo "<tr class='deep-purple lighten-3'><td colspan='10'>Card $card[card]</td></tr>\n";
+	$superbloco = "card$card[card]";
+	echo "<tr class='deep-purple lighten-3 togglavel' swap='$superbloco'><td colspan='10'>Card $card[card]</td></tr>\n";
 
 	foreach($card[pons] as $porta){
+		$bloco = "card$card[card]pon$porta[porta]";
 		$altura = $porta[quantidade] +1;
-		echo "\t<tr class='indigo lighten-4' swap='card$card[card]pon$porta[porta]'><td colspan='10'>Porta $porta[porta] com $porta[quantidade] ONT sendo $porta[onns] up/$porta[offs] down </td></tr>\n";
-		echo "<td class='indigo lighten-4' rowspan='$altura'></td>";
+		echo "\t<tr class='indigo lighten-4 togglavel' swap='$bloco'><td colspan='10'>Porta $porta[porta] com $porta[quantidade] ONT sendo $porta[onns] up/$porta[offs] down </td></tr>\n";
+		echo "<td class='indigo lighten-4 $bloco $superbloco' rowspan='$altura'></td>";
 		foreach($porta[lista] as $ont){
 			if($ont[ost] == "up"){
 				$classe = 'green lighten-5';
@@ -113,7 +115,7 @@ foreach($onu as $card){
 			}
 			
 			echo "\t\t
-					<tr class='$classe $ativo' >
+					<tr class='$classe $ativo  $bloco $superbloco' >
 					<td title='Login'>$ont[login]</td>
 					<td title='MAC'>$ont[mac]</td>
 					<td title='Obs'>$cancelado</td>
