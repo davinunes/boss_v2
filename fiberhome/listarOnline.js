@@ -57,4 +57,11 @@ $(document).on('change', 'select#SLOT', function(){
 	
 });
 
+$(document).on('click', '.togglavel', function(){
+	let classe = "."+$(this).attr('swap');
+	console.log(classe);
+	$(classe).toggle();
+    
+});
+
 // $("select#SLOT option")[0].text.split("[")[1].split("]")
