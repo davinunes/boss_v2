@@ -134,59 +134,10 @@ box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
 	</select>
 	<label>OLT</label>
 	</div>
-	
-	<div class="input-field col s3 m2">
-	<select id='SLOT' name='SLOT'>
-	  <option value="1" selected>1</option>
-	  <option value="2">2</option>
-	  <option value="3">3</option>
-	  <option value="4">4</option>
-	  <option value="5">5</option>
-	  <option value="6">6</option>
-	  <option value="7">7</option>
-	  <option value="8">8</option>
-	  <option value="9" disabled>9</option>
-	  <option value="10" disabled>10</option>
-	  <option value="11">11</option>
-	  <option value="12">12</option>
-	  <option value="13">13</option>
-	  <option value="14">14</option>
-	  <option value="15">15</option>
-	  <option value="16">16</option>
-	</select>
-	<label>SLOT</label>
-	</div>
 
-	<div class="input-field col s3 m2">
-	<select id='PONN' name='PONN'>
-	  <option value="1" selected>1</option>
-	  <option value="2">2</option>
-	  <option value="3">3</option>
-	  <option value="4">4</option>
-	  <option value="5">5</option>
-	  <option value="6">6</option>
-	  <option value="7">7</option>
-	  <option value="8">8</option>
-	  <option value="9">9</option>
-	  <option value="10">10</option>
-	  <option value="11">11</option>
-	  <option value="12">12</option>
-	  <option value="13">13</option>
-	  <option value="14">14</option>
-	  <option value="15">15</option>
-	  <option value="16">16</option>
-	</select>
-	<label>PON</label>
-	</div>
-	
-	<div class="input-field col s6 m1">
-		<a id='slt' class="waves-effect waves-light btn-small blue">slot</a>
-		
-		
-	</div>
 	<div class="input-field col s6 m1">
 		
-		<a id='btn' class="waves-effect waves-light btn-small orange right">Atualizar</a>
+		<a id='btn' class="waves-effect waves-light btn-small orange right">Buscar</a>
 		
 	</div>
 	

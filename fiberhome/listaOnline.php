@@ -33,6 +33,10 @@ foreach($output as $a){
 	// É hora de trabalhar a lista de ONU
 	$lista = explode("\n", $lista);
 	
+	$onu[slot] = $slot;
+	$onu[$slot][pon]= $pon;
+	$onu[$slot][$pon][qtd] = $qtd;
+	
 	foreach($lista as $a){
 		if(strlen($a) < 10) continue;
 		$linha = preg_replace('/\\s\\s+/', ' ', $a);
@@ -51,7 +55,7 @@ foreach($output as $a){
 		$item[vlan] = $ixc[vlan];
 		$item[ativo] = $status;
 		
-		$onu[$slot][$pon][] = $item;
+		$onu[$slot][$pon][lista][] = $item;
 	}
 }
 // Pronto, agora eu tenho todos os dados organizados. Preciso exibir isso como uma tabela.
@@ -75,10 +79,11 @@ echo "<table class='responsive-table centered highlight'>\n";
 echo "  	<tbody>";
 
 foreach($onu as $card){
-	echo "<tr rowspan='8'>Card X</tr>\n";
+	//Crio uma linha separadora ou Crio uma coluna esticada
+	echo "<tr class='teal'><td colspan='8'>Card X</td></tr>\n";
 	foreach($card as $porta){
-		echo "\t<tr rowspan='8'>Porta X</tr>\n";
-		foreach($porta as $ont){
+		echo "\t<tr><td colspan='8'>Porta X</td></tr>\n";
+		foreach($porta[lista] as $ont){
 			if($ont[ost] == "up"){
 				$classe = 'green lighten-5';
 			}else{
