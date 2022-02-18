@@ -1,6 +1,6 @@
 <?php
 // var_dump($_GET);
-
+include "database.php";
 $command = '/usr/bin/python /var/www/ilunne/boss/py/listaOnline.py '.$_GET[OLT].' '.$_GET[SLOT].' '.$_GET[PONN];
 $command = '/usr/bin/python /var/www/ilunne/boss/py/listaTodasONUonline.py '.$_GET[OLT];
 
@@ -16,13 +16,45 @@ $output = explode("-----  ONU Auth Table, ", $output[0]);
 // Vamos montar um Array com os dados
 foreach($output as $a){
 	if(strlen($a) < 10) continue;
-	
+	// Separo o cabeçalho da lista
 	$a = explode("--- -------------- -- --- --- ------------ ---------- ----------------------------------------", $a);
 	$spi = $a[0];
 	$lista = $a[1];
-	var_dump($spi);
+	
+	//trabalho o cabeçalho
+	$spi = explode(" -----", $spi);
+	$spi = explode(", ", $spi[0]);
+	$slot 	=  (explode(" = ", $spi[0]))[1];
+	$pon 	=  (explode(" = ", $spi[1]))[1];
+	$qtd 	=  (explode(" = ", $spi[2]))[1];
+	
+	// Agora eu sei o slot, a Pon e a Quatidade de Itens de cada PON
+	
+	// É hora de trabalhar a lista de ONU
+	$lista = explode("\n", $lista);
+	
+	foreach($lista as $a){
+		if(strlen($a) < 10) continue;
+		$linha = preg_replace('/\\s\\s+/', ' ', $a);
+		$linha = explode(" ", $linha);
+		
+		// Organizo o catálogo
+		$item[num] = $linha[0];
+		$item[ost] = $linha[4];
+		$item[mac] = $linha[5];
+		
+		$ixc = check_onu($item[mac]);
+		$status = check_precontrato($ixc[id_contrato]);
+		
+		$item[login] = $ixc[login];
+		$item[perfil] = $ixc[id_perfil];
+		$item[vlan] = $ixc[vlan];
+		$item[ativo] = $status;
+		
+		$onu[$slot][$pon][] = $item;
+	}
 }
- 
+var_dump($onu);
  exit;
 
 $output = explode("A: Authorized  P: Preauthorized  R: System Reserved", $output);
@@ -33,32 +65,10 @@ $output = explode("\n", $output[0]);
 // var_dump($output);
 // echo "</pre>";
 
-include "database.php";
 
 
-foreach($output as $a){
-	if(strlen($a) < 10) continue;
-	// Se eu encontrar a palavra continue na linha, deixei de precisar dessa função com o comando terminal lenght 0 na olt
-	if(strpos($a, 'continue') !== false) continue;
-	$linha = preg_replace('/\\s\\s+/', ' ', $a);
-	$linha = explode(" ", $linha);
-	
-	$item[num] = $linha[0];
-	$item[ost] = $linha[4];
-	$item[mac] = $linha[5];
-	
-	$ixc = check_onu($item[mac]);
-	$status = check_precontrato($ixc[id_contrato]);
-	
-	$item[login] = $ixc[login];
-	$item[perfil] = $ixc[id_perfil];
-	$item[vlan] = $ixc[vlan];
-	$item[ativo] = $status;
-	
-	$onu[] = $item;
-	
-	
-}
+
+
 // var_dump($onu);
 echo "<table class='responsive-table centered highlight'>\n";
 echo "	<thead>";
