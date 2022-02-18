@@ -8,6 +8,11 @@
   <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
 </head>
 <style>
+
+table td{
+	padding: 5px !important;
+}
+
 .btn-mini {
 color: #FFF;
 font-size: 1.1rem;
@@ -150,10 +155,10 @@ box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
     </div>
   </div>
 
-<div class="row">
-    <div class="col s12 m7 ">
+<div id='lista' class="row">
+    <div class="col s12 m10 ">
       <div class="card-panel ">
-        <span id='lista' class="white-text">Aguardando escolha.
+        <span  class="white-text">Aguardando escolha.
         </span>
       </div>
     </div>

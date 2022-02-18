@@ -34,7 +34,8 @@ foreach($output as $a){
 	$lista = explode("\n", $lista);
 	
 	$onu[$slot][card] = $slot;
-	
+	$online = 0;
+	$offline = 0;
 	foreach($lista as $a){
 		if(strlen($a) < 10) continue;
 		$linha = preg_replace('/\\s\\s+/', ' ', $a);
@@ -53,8 +54,17 @@ foreach($output as $a){
 		$item[vlan] = $ixc[vlan];
 		$item[ativo] = $status;
 		
+		// Faço a contagem de ONU online e Offline nessa lista
+		if($item[ost] == "up"){
+			$online++;
+		}else{
+			$offline++;
+		}
+		
 		$onu[$slot][pons][$pon][porta]= $pon;
 		$onu[$slot][pons][$pon][quantidade]= $qtd;
+		$onu[$slot][pons][$pon][onns]= $online;
+		$onu[$slot][pons][$pon][offs]= $offline;
 		$onu[$slot][pons][$pon][lista][] = $item;
 	}
 }
@@ -64,7 +74,7 @@ foreach($output as $a){
 
 
 // var_dump($onu);
-echo "<table class='responsive-table centered highlight'>\n";
+echo "<table class=' centered highlight'>\n";
 // echo "	<thead>";
 // echo "	<tr>
 			// <th>Login</th>
@@ -84,13 +94,15 @@ foreach($onu as $card){
 
 	foreach($card[pons] as $porta){
 		$altura = $porta[quantidade] +1;
-		echo "\t<tr class='indigo lighten-4'><td colspan='10'>Porta $porta[porta] com $porta[quantidade]</td></tr>\n";
+		echo "\t<tr class='indigo lighten-4' swap='card$card[card]pon$porta[porta]'><td colspan='10'>Porta $porta[porta] com $porta[quantidade] ONT sendo $porta[onns] up/$porta[offs] down </td></tr>\n";
 		echo "<td class='indigo lighten-4' rowspan='$altura'></td>";
 		foreach($porta[lista] as $ont){
 			if($ont[ost] == "up"){
 				$classe = 'green lighten-5';
+				$cancelado = "<i class='material-icons'>cloud_done</i>";
 			}else{
-				$classe = 'grey lighten-4';
+				$classe = 'grey lighten-2';
+				$cancelado = "<i class='material-icons'>cloud_off</i>";
 			}
 			
 			if($ont[ativo] == "I"){
@@ -98,18 +110,17 @@ foreach($onu as $card){
 				$cancelado = "CONTRATO CANCELADO";
 			}else{
 				$ativo = '';
-				$cancelado = "";
 			}
 			
 			echo "\t\t
 					<tr class='$classe $ativo' >
-					<td>$ont[login]</td>
-					<td>$ont[mac]</td>
-					<td>$cancelado</td>
-					<td>$ont[vlan]</td>
-					<td>$ont[perfil]</td>
-					<td>$ont[ost]</td>
-					<td>$ont[num]</td>
+					<td title='Login'>$ont[login]</td>
+					<td title='MAC'>$ont[mac]</td>
+					<td title='Obs'>$cancelado</td>
+					<td title='Vlan'>$ont[vlan]</td>
+					<td title='Perfil'>$ont[perfil]</td>
+					<td title='Status'>$ont[ost]</td>
+					<td title='Numero'>$ont[num]</td>
 			</tr>";
 			
 		}
