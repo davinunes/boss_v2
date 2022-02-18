@@ -54,61 +54,63 @@ foreach($output as $a){
 		$onu[$slot][$pon][] = $item;
 	}
 }
-var_dump($onu);
- exit;
+// Pronto, agora eu tenho todos os dados organizados. Preciso exibir isso como uma tabela.
 
-$output = explode("A: Authorized  P: Preauthorized  R: System Reserved", $output);
-$output = explode("Command execute success.", $output[1]);
-$output = explode("\n", $output[0]);
-
-// echo "<pre>";
-// var_dump($output);
-// echo "</pre>";
-
-
-
+// var_dump($onu);
 
 
 // var_dump($onu);
 echo "<table class='responsive-table centered highlight'>\n";
-echo "	<thead>";
-echo "	<tr>
-			<th>Login</th>
-			<th>Mac</th>
-			<th>Obs</th>
-			<th>Vlan</th>
-			<th>Perfil</th>
-			<th>Stat</th>
-			<th>Num</th>
-		</tr>";
-echo "	</thead>";
+// echo "	<thead>";
+// echo "	<tr>
+			// <th>Login</th>
+			// <th>Mac</th>
+			// <th>Obs</th>
+			// <th>Vlan</th>
+			// <th>Perfil</th>
+			// <th>Stat</th>
+			// <th>Num</th>
+		// </tr>";
+// echo "	</thead>";
 echo "  	<tbody>";
 
-foreach($onu as $t){
-	if($t[ost] == "up"){
-		$classe = 'green lighten-5';
-	}else{
-		$classe = 'grey lighten-4';
+foreach($onu as $card){
+	echo "<tr rowspan='8'>Card X</tr>\n";
+	foreach($card as $porta){
+		echo "\t<tr rowspan='8'>Porta X</tr>\n";
+		foreach($porta as $ont){
+			if($ont[ost] == "up"){
+				$classe = 'green lighten-5';
+			}else{
+				$classe = 'grey lighten-4';
+			}
+			
+			if($ont[ativo] == "I"){
+				$ativo = 'red-text text-darken-4';
+				$cancelado = "CONTRATO CANCELADO";
+			}else{
+				$ativo = '';
+				$cancelado = "";
+			}
+			
+			echo "\t\t
+					<tr class='$classe $ativo' >
+					<td>$ont[login]</td>
+					<td>$ont[mac]</td>
+					<td>$cancelado</td>
+					<td>$ont[vlan]</td>
+					<td>$ont[perfil]</td>
+					<td>$ont[ost]</td>
+					<td>$ont[num]</td>
+			</tr>";
+			
+		}
+		
 	}
-	
-	if($t[ativo] == "I"){
-		$ativo = 'red-text text-darken-4';
-		$cancelado = "CONTRATO CANCELADO";
-	}else{
-		$ativo = '';
-		$cancelado = "";
-	}
-	
-	echo "<tr class='$classe $ativo' >
-	<td>$t[login]</td>
-	<td>$t[mac]</td>
-	<td>$cancelado</td>
-	<td>$t[vlan]</td>
-	<td>$t[perfil]</td>
-	<td>$t[ost]</td>
-	<td>$t[num]</td>
-	</tr>";
+
 }
+
+
 
 echo "		</tbody>\n";
 echo "</table>\n";
