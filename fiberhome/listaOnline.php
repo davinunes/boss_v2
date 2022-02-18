@@ -96,7 +96,7 @@ foreach($onu as $card){
 	foreach($card[pons] as $porta){
 		$bloco = "card$card[card]pon$porta[porta]";
 		$altura = $porta[quantidade] +1;
-		echo "\t<tr class='indigo lighten-4 togglavel' swap='$bloco'><td colspan='10'>Porta $porta[porta] com $porta[quantidade] ONT sendo $porta[onns] up/$porta[offs] down </td></tr>\n";
+		echo "\t<tr class='indigo lighten-4 togglavel $superbloco' swap='$bloco'><td colspan='10'>Porta $porta[porta] com $porta[quantidade] ONT sendo $porta[onns] up/$porta[offs] down </td></tr>\n";
 		echo "<td class='indigo lighten-4 $bloco $superbloco' rowspan='$altura'></td>";
 		foreach($porta[lista] as $ont){
 			if($ont[ost] == "up"){
