@@ -62,8 +62,9 @@ $(document).on('click', '.togglavel1', function(){
 	console.log(classe);
 	if($(classe).is(":visible")){
 		$(classe).click();
+	}else{
+		$(classe).toggle();
 	}
-	$(classe).toggle();
     
 });
 
