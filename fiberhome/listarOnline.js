@@ -57,7 +57,17 @@ $(document).on('change', 'select#SLOT', function(){
 	
 });
 
-$(document).on('click', '.togglavel', function(){
+$(document).on('click', '.togglavel1', function(){
+	let classe = "."+$(this).attr('swap');
+	console.log(classe);
+	if($(classe).is(":visible")){
+		$(classe).click();
+	}
+	$(classe).toggle();
+    
+});
+
+$(document).on('click', '.togglavel2', function(){
 	let classe = "."+$(this).attr('swap');
 	console.log(classe);
 	$(classe).toggle();
