@@ -144,6 +144,7 @@ box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
 		
 		<a id='btn' class="waves-effect waves-light btn-small orange right">Buscar</a>
 		
+		
 	</div>
 	
 	

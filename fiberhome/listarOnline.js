@@ -75,4 +75,10 @@ $(document).on('click', '.togglavel2', function(){
     
 });
 
+$(document).on('click', '#isup', function(){
+
+	$(".isup").toggle();
+    
+});
+
 // $("select#SLOT option")[0].text.split("[")[1].split("]")

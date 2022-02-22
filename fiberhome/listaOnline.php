@@ -100,7 +100,7 @@ foreach($onu as $card){
 		echo "<td class='indigo lighten-4 $bloco $superbloco' rowspan='$altura'></td>";
 		foreach($porta[lista] as $ont){
 			if($ont[ost] == "up"){
-				$classe = 'green lighten-5';
+				$classe = 'green lighten-5 isup';
 				$cancelado = "<i class='material-icons'>cloud_done</i>";
 			}else{
 				$classe = 'grey lighten-2';
