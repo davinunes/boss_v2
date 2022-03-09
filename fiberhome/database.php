@@ -222,9 +222,24 @@ if($_GET['metodo'] == "historico"){
 		// var_dump($params);
 		$api->get('radacct', $params);
 		$retorno = $api->getRespostaConteudo(true);// false para json | true para array
-		echo '<pre>';
-		print_r($retorno);
-		echo '</pre>';
+		echo '<table>';
+		foreach($retorno[registros] as $r){
+			$Dias = ;
+			$Horas = (int)($r[acctsessiontime]/60);
+			$Minutos = ;
+			$Segundos = ;
+			echo "<tr>
+					<td>$r[callingstationid]</td>
+					<td>$r[framedipaddress]</td>
+					<td>$r[framedipv6prefix]</td>
+					<td>$r[acctstarttime]</td>
+					<td>$r[acctstoptime]</td>
+					<td>$tempo</td>
+					<td>$r[acctinputoctets]</td>
+					<td>$r[acctoutputoctets]</td>
+				</tr>";
+		}
+		echo '</table>';
 
 }
 
