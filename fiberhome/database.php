@@ -1,6 +1,12 @@
 <?php
 include "../database.php";
 
+function converterSegundos($segundos, $formato) {
+    $dtF = new \DateTime('@0');
+    $dtT = new \DateTime("@$segundos");
+    return $dtF->diff($dtT)->format($formato);
+}
+
 function telegram($msg) {
 		$telegrambot='1573595662:AAHnG-8LiM9ipKGZ_cd64YBuhaZZkPG33-0';
 		$telegramchatid=-374877714;
@@ -224,10 +230,8 @@ if($_GET['metodo'] == "historico"){
 		$retorno = $api->getRespostaConteudo(true);// false para json | true para array
 		echo '<table>';
 		foreach($retorno[registros] as $r){
-			$Dias = ;
-			$Horas = (int)($r[acctsessiontime]/60);
-			$Minutos = ;
-			$Segundos = ;
+			$tempo = converterSegundos($r[acctsessiontime],'%ad, %H:%I:%S');
+			$k = $r[acctoutputoctets]/1048576;
 			echo "<tr>
 					<td>$r[callingstationid]</td>
 					<td>$r[framedipaddress]</td>
@@ -236,7 +240,7 @@ if($_GET['metodo'] == "historico"){
 					<td>$r[acctstoptime]</td>
 					<td>$tempo</td>
 					<td>$r[acctinputoctets]</td>
-					<td>$r[acctoutputoctets]</td>
+					<td>$k</td>
 				</tr>";
 		}
 		echo '</table>';
