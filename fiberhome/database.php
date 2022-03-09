@@ -202,6 +202,31 @@ if($_GET['metodo'] == "pre"){
 		
 	}
 }
+if($_GET['metodo'] == "historico"){
+	
+
+		require('api.php');
+		$host = 'https://acessodf.net/webservice/v1';
+		$token = '6:e6a38134ca5be7e571282d7cca2e0eb9420b32b152aa701e6ad5127306535277';//token gerado no cadastro do usuario (verificar permissões)
+		$selfSigned = false; //true para certificado auto assinado
+		$api = new IXCsoft\WebserviceClient($host, $token, $selfSigned);
+		$params = array(
+    'qtype' => 'radacct.username',//campo de filtro
+    'query' => 'luciano_fontes',//valor para consultar
+    'oper' => '=',//operador da consulta
+    'page' => '1',//página a ser mostrada
+    'rp' => '30',//quantidade de registros por página
+    'sortname' => 'radacct.radacctid',//campo para ordenar a consulta
+    'sortorder' => 'desc'//ordenação (asc= crescente | desc=decrescente)
+);
+		// var_dump($params);
+		$api->get('radacct', $params);
+		$retorno = $api->getRespostaConteudo(true);// false para json | true para array
+		echo '<pre>';
+		print_r($retorno);
+		echo '</pre>';
+
+}
 
 if($_POST['metodo'] == "pesca_login"){
 	
