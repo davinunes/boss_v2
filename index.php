@@ -249,6 +249,17 @@ echo '<div class="row no-print">';
 echo "<button onclick='getLocation()' id='modalup' class=\" right waves-effect waves-light btn-large modal-trigger\" href=\"#fechar\"><i class='left  material-icons'>edit</i>Comentar</button>&#160;";
 // if($adm){
 	echo '<a href="fiberhome/" class="teal darken-3 modal-close waves-effect waves-orange btn-large"><i class="material-icons large left">fact_check</i>Toca do Dragão</a> ';
+	
+	if($dados[login]){ // Se tem o login configurado na OS
+	$onu = get_onu($dados['login']);
+	echo "<a href='speed.php?login=".$dados['login']." '><div class='btn deep-green darken-3'><b>Diagnóstico: ".$dados['login']." </b></div> </a>";
+}else{ // Senão lista todos os logins do cliente
+	foreach(login($dados['cliente_id']) as $c){
+		// var_dump($c['login']);
+		echo "<a href='speed.php?login=".$c['login']." '><div class='btn orange darken-2'><b>Diagnóstico: ".$c['login']." </b></div> </a>";
+	}
+	
+}
 // }
 echo '</div>';
 
