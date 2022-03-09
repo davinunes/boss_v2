@@ -252,11 +252,11 @@ echo "<button onclick='getLocation()' id='modalup' class=\" right waves-effect w
 	
 	if($dados[login]){ // Se tem o login configurado na OS
 	$onu = get_onu($dados['login']);
-	echo "<a href='speed.php?login=".$dados['login']." '><div class='btn deep-green darken-3'><b>Diagnóstico: ".$dados['login']." </b></div> </a>";
+	echo "<a href='speed.php?login=".$dados['login']." '><div class='btn deep-green darken-3'><b>: ".$dados['login']." </b></div> </a>";
 }else{ // Senão lista todos os logins do cliente
 	foreach(login($dados['cliente_id']) as $c){
 		// var_dump($c['login']);
-		echo "<a href='speed.php?login=".$c['login']." '><div class='btn orange darken-2'><b>Diagnóstico: ".$c['login']." </b></div> </a>";
+		echo "<a href='speed.php?login=".$c['login']." '><div class='btn orange darken-2'><b>: ".$c['login']." </b></div> </a>";
 	}
 	
 }
