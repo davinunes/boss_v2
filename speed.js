@@ -60,6 +60,11 @@ $(document).ready(function(){
 	var onu = setTimeout(function(){
 				onu_monitor();
 			},respawn*2);
+	var hist = setTimeout(function(){
+				$.post("fiberhome/database.php?metodo=historico&login="+$("#download").attr("login"), "", function(data) {
+					$("#hist").html(data);
+				});
+			},respawn);
 	
 	
 	$("#saveonu").click(function(){

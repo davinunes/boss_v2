@@ -191,6 +191,7 @@
 	
 	
 	</div>
+
 	';
 	if($_SESSION[os]){
 		echo '
@@ -199,8 +200,12 @@
 				<a class=" waves-effect waves-light btn-large" id="savetest">Salvar resultado do monitoramento</a>
 			</div>
 		';
+		
 	}
+	
 	echo '
+	<div class="card-content" id="hist">
+	</div>
 	</div>
 	</div>
 	</div>
