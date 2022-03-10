@@ -221,8 +221,9 @@
 					</div>
 					<div class="row">
 						<div class="col s12" id="snapshot">
+							Após finalizar o monitoramento será possivel consultar as conexões de CGNAT.
 								<pre>
-									<p id="natsnap">Após finalizar o monitoramento será possivel consultar as conexões de CGNAT.</p>
+									<p id="natsnap"></p>
 								</pre>
 								
 							</div>

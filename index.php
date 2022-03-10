@@ -259,7 +259,7 @@ echo "</div>";
 echo '<div class="row no-print">';
 	if($dados[login]){ // Se tem o login configurado na OS
 		$onu = get_onu($dados['login']);
-		echo "<a href='speed.php?login=".$dados['id_login']." '><div class='btn deep-green darken-3'><b>Diagnóstico: ".$dados['login']." </b></div> </a>";
+		echo "<a href='speed.php?login=".$dados['login']." '><div class='btn deep-green darken-3'><b>Diagnóstico: ".$dados['login']." </b></div> </a>";
 	}else{ // Senão lista todos os logins do cliente
 		foreach(login($dados['cliente_id']) as $c){
 		// var_dump($c['login']);

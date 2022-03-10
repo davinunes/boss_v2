@@ -27,7 +27,7 @@ $(document).ready(function(){
 	$("#saveonu").hide();
 	$("#savetest").hide();
 	
-	$("#endoflife").html("Buscando usuário no roteador...");
+	$("#endoflife").html("Buscando usuário no roteador...<br><img src='5448.gif'>");
 	var contar = setInterval(function(){
 		if($("#download").attr("status") == "offline"){
 			console.log("Estado Offline com: "+encerrar);
