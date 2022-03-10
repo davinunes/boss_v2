@@ -11,8 +11,8 @@ $(document).ready(function(){
 	
 	
 	var cell = detectar_mobile();
-	if(cell){ //Verifica se Ã© celular
-		 console.log("Isto Ã© um celular");
+	if(cell){ //Verifica se é celular
+		 console.log("Isto é um celular");
 //		 alert("Celular!");
 				
 			$("p").css({
@@ -27,14 +27,14 @@ $(document).ready(function(){
 	$("#saveonu").hide();
 	$("#savetest").hide();
 	
-	$("#endoflife").html(" Procurando...");
+	$("#endoflife").html("Buscando usuário no roteador...");
 	var contar = setInterval(function(){
 		if($("#download").attr("status") == "offline"){
 			console.log("Estado Offline com: "+encerrar);
 			iface();
 		}else{
 			console.log("Estado Online com: "+encerrar);
-			$("#endoflife").html(" Observando...");
+			$("#endoflife").html("Monitorando uso de banda...");
 			bps();
 			nat();
 			$("#nat").show();
@@ -48,7 +48,7 @@ $(document).ready(function(){
 			// console.log("Upload:"+Upload);
 			// console.log("Inicio:"+Hora[0]);
 			setTimeout(function(){
-				$("#endoflife").html(" Tempo encerrado!");
+				$("#endoflife").html("Monitoramento encerrado!");
 				var uid = $("#download").attr("login")+'_'+Hora[0];
 				// Download, Upload, Inicio, Intervalo, Id, Titulo
 				Resultado = exportaGrafico(Download,Upload,Hora[0],respawn,uid,'Trafego observado de '+$("#download").attr("login")+' por '+respawn/1000*repetir+' seg');

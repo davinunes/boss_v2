@@ -187,7 +187,7 @@
 		$dados = $dados[0];
 		$sstatus = $dados[status];
 		
-		echo "<span id='dadosOs' os='$sos' tec='$stec' func='$sfunc' status='$sstatus' class='card-title'> <b>Em atenção a OS $sos por $stecnico</b></span>";
+		echo "<span id='dadosOs' os='$sos' tec='$stec' func='$sfunc' status='$sstatus' class='card-title'> <h3><b>Diagnosticando para a OS $sos -> $stecnico</b></h3></span>";
 		
 		
 	}
@@ -196,7 +196,7 @@
 						<div class="col s6">
 							<figure  class="highcharts-figure">
 								  <div style="display:none;" id="container"></div>
-								  <h3 id="endoflife" class="highcharts-description"> </h>
+								  <h4 id="endoflife" class="highcharts-description"> </h4>
 							</figure>
 						</div>
 						<div class="col s6">
@@ -207,7 +207,7 @@
 					</div>
 					<div class="row">
 						<div class="col s6" id="onu">
-	
+							<h4>Se houver uma onu cadastrada e for FiberHome, dados de diagnóstico serão mostrados aqui.</h4>
 						</div>
 					</div>
 					</div>
@@ -226,7 +226,7 @@
 	
 	echo '
 	<div class="card-content" id="hist">
-		<p>Buscando histórico de Conexões</p>
+		<h4>Buscando histórico de Conexões</h4>
 	</div>
 	</div>
 	</div>

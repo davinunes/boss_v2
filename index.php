@@ -209,10 +209,12 @@ echo "<div class='chip brown lighten-3'>".$dados[Assunto]." </div> ";
 if($dados[login]){ // Se tem o login configurado na OS
 	$onu = get_onu($dados['login']);
 	echo "<a href='speed.php?login=".$dados['login']." '><div class='chip deep-green darken-3'><b>".$dados['login']." </b></div> </a>";
+	$legacy = "<a login='$dados[id_login]' class='legacy green lighten-2 waves-effect waves-light btn'><i class='left  material-icons'>chat</i>Histórico</a>";
 }else{ // Senão lista todos os logins do cliente
 	foreach(login($dados['cliente_id']) as $c){
 		// var_dump($c['login']);
 		echo "<a href='speed.php?login=".$c['login']." '><div class='chip orange darken-2'><b>".$c['login']." </b></div> </a>";
+		$legacy .= "<a login='$c[login]' class='legacy green lighten-2 waves-effect waves-light btn'><i class='left  material-icons'>chat</i>Histórico $c[login]</a> ";
 	}
 	
 }
@@ -244,30 +246,34 @@ echo "<div id='msgs' style='min-height: 50vh';
 >";
 mensagens(dbMsg($os));
 echo "</div>";
+
+
 echo '<div class="row no-print card-action">';
 echo '<div class="row no-print">';
 echo "<button onclick='getLocation()' id='modalup' class=\" right waves-effect waves-light btn-large modal-trigger\" href=\"#fechar\"><i class='left  material-icons'>edit</i>Comentar</button>&#160;";
-// if($adm){
-	echo '<a href="fiberhome/" class="teal darken-3 modal-close waves-effect waves-orange btn-large"><i class="material-icons large left">fact_check</i>Toca do Dragão</a> ';
 	
+echo '<a href="fiberhome/" class="teal darken-3 modal-close waves-effect waves-orange btn-large"><i class="material-icons large left">fact_check</i>Toca do Dragão</a> ';
+echo "</div>";
+echo '<div class="row no-print">';
 	if($dados[login]){ // Se tem o login configurado na OS
-	$onu = get_onu($dados['login']);
-	echo "<a href='speed.php?login=".$dados['login']." '><div class='btn deep-green darken-3'><b>Diagnóstico: ".$dados['login']." </b></div> </a>";
-}else{ // Senão lista todos os logins do cliente
-	foreach(login($dados['cliente_id']) as $c){
+		$onu = get_onu($dados['login']);
+		echo "<a href='speed.php?login=".$dados['login']." '><div class='btn deep-green darken-3'><b>Diagnóstico: ".$dados['login']." </b></div> </a>";
+	}else{ // Senão lista todos os logins do cliente
+		foreach(login($dados['cliente_id']) as $c){
 		// var_dump($c['login']);
 		echo "<a href='speed.php?login=".$c['login']." '><div class='btn orange darken-2'><b>Diagnóstico: ".$c['login']." </b></div> </a>";
 	}
 	
-}
-// }
-echo '</div>';
+} //if not session OS
 
+echo '</div>';
+echo '<div class="row no-print">';
 
 echo "<a id='2changeOs' class=' teal lighten-2 waves-effect waves-light btn'><i class='left  material-icons'>assignment</i>Lista</a>&#160;";
 
-echo "<a id='legacy' login='$dados[id_login]' class=' green lighten-2 waves-effect waves-light btn'><i class='left  material-icons'>chat</i>Histórico</a>&#160;";
+echo $legacy;
 
+echo '<div class="row no-print">';
 if($bk){
 	echo "<a id='aanterior' href='os.php?os=$bk' class=' aanterior deep-orange lighten-1 waves-effect waves-light btn'><i class='left  material-icons'>call_received</i>Anterior</a>&#160;";
 }
@@ -275,6 +281,7 @@ if($bk){
 if($nx){
 	echo "<a id='aproxima' href='os.php?os=$nx' class=' aproxima brown lighten-1 waves-effect waves-light btn'><i class='right  material-icons'>call_made</i>Proxima</a>";
 }
+echo '</div >';
 }
 echo '</div>';
 
