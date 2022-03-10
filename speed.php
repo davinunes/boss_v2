@@ -217,7 +217,16 @@
 						<div class="col s6" id="onu">
 							<h4>Se houver uma onu cadastrada e for FiberHome, dados de diagnóstico serão mostrados aqui.</h4>
 						</div>
+						
 					</div>
+					<div class="row">
+						<div class="col s12" id="snapshot">
+								<pre>
+									<p id="natsnap">Após finalizar o monitoramento será possivel consultar as conexões de CGNAT.</p>
+								</pre>
+								
+							</div>
+						</div>
 					</div>
 	
 
@@ -227,6 +236,8 @@
 			<div class="card-action">
 				<a class=" waves-effect waves-light btn-large" id="saveonu">Salvar Status da ONU</a>
 				<a class=" waves-effect waves-light btn-large" id="savetest">Salvar resultado do monitoramento</a>
+				<a style="display:none;" class="right blue natsnap waves-effect waves-light btn-large" >SnapShot das conexões NAT</a>
+				
 			</div>
 		';
 		

@@ -39,6 +39,7 @@ $(document).ready(function(){
 			nat();
 			$("#nat").show();
 			$("#container").show();
+			
 		}
 		encerrar++;
 		if(encerrar > repetir){
@@ -49,6 +50,7 @@ $(document).ready(function(){
 			// console.log("Inicio:"+Hora[0]);
 			setTimeout(function(){
 				$("#endoflife").html("Monitoramento encerrado!");
+				$(".natsnap").show();
 				var uid = $("#download").attr("login")+'_'+Hora[0];
 				// Download, Upload, Inicio, Intervalo, Id, Titulo
 				Resultado = exportaGrafico(Download,Upload,Hora[0],respawn,uid,'Trafego observado de '+$("#download").attr("login")+' por '+respawn/1000*repetir+' seg');
@@ -63,12 +65,21 @@ $(document).ready(function(){
 	var onu = setTimeout(function(){
 				onu_monitor();
 			},respawn*2);
+			
 	var hist = setTimeout(function(){
 				$.post("fiberhome/database.php?metodo=historico&login="+$("#download").attr("login"), "", function(data) {
 					$("#hist").html(data);
 				});
 			},respawn);
 	
+	$(".natsnap").click(function(){
+		$(this).remove();
+		console.log("Clicou pra fazer snap");
+		var url = 'speed.php?metodo=natspy&ipv4='+$("#download").attr("ipv4");
+		$.post(url, "", function(data) {
+			$("#natsnap").html(data);
+		});
+	});
 	
 	$("#saveonu").click(function(){
 		console.log("Clicou em Publicar");
