@@ -11,6 +11,8 @@ if metodo == "nat":
 	COMANDO = "show services sessions source-prefix "+login+" count "
 elif metodo == "int":
 	COMANDO = "show subscribers user-name "+login+" | match pp0 "
+elif metodo == "natspy":
+    COMANDO = "show services sessions source-prefix "+login+" | no-more"
 else:
 	COMANDO = "show interfaces "+login+" extensive | match bps "
 

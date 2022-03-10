@@ -173,7 +173,7 @@ var imagens_postadas;
 	$(".legacy").click(function(){
 		let login = $(this).attr("login");
 		console.log(login);
-		return;
+		// return;
 		var dados = {
 			login : login
 		}

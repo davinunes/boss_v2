@@ -110,7 +110,7 @@ function login($termo){ # Lê os Veiculos da Tabela
 //	echo $sql;
 	
 	$sql  ="select ";
-	$sql .="	login ";
+	$sql .="	id, login ";
 	$sql .="from ";
 	$sql .="	radusuarios ";
 	$sql .="where ";

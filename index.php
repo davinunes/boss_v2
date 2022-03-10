@@ -212,10 +212,12 @@ if($dados[login]){ // Se tem o login configurado na OS
 	$legacy = "<a login='$dados[id_login]' class='legacy green lighten-2 waves-effect waves-light btn'><i class='left  material-icons'>chat</i>Histórico</a>";
 }else{ // Senão lista todos os logins do cliente
 	foreach(login($dados['cliente_id']) as $c){
-		// var_dump($c['login']);
+		// var_dump($c);
 		echo "<a href='speed.php?login=".$c['login']." '><div class='chip orange darken-2'><b>".$c['login']." </b></div> </a>";
-		$legacy .= "<a login='$c[login]' class='legacy green lighten-2 waves-effect waves-light btn'><i class='left  material-icons'>chat</i>Histórico $c[login]</a> ";
+		
+		$legacy .= "<a login='$c[id]' class='legacy green lighten-2 waves-effect waves-light btn'><i class='left  material-icons'>chat</i>Histórico $c[login]</a> ";
 	}
+	echo "<div class='chip putple darken-2'><b>Por gentileza, meninas, selecionar o login na OS</b></div>";
 	
 }
 

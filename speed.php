@@ -148,6 +148,14 @@
 		exit;
 	}
 	
+	if($_GET['metodo'] == "natspy"){
+		$command = '/usr/bin/python /var/www/ilunne/boss/py/junos.py natspy '.$_GET['ipv4'];
+		
+		$output = shell_exec($command);
+		echo $output;
+		exit;
+	}
+	
 	
 	if(!$_GET['login']){
 		exit;
