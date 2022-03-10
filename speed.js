@@ -36,6 +36,9 @@ $(document).ready(function(){
 			console.log("Estado Online com: "+encerrar);
 			$("#endoflife").html(" Observando...");
 			bps();
+			nat();
+			$("#nat").show();
+			$("#container").show();
 		}
 		encerrar++;
 		if(encerrar > repetir){
@@ -197,6 +200,16 @@ function bps() {
 		
 }
 
+function nat() {
+	var url = 'speed.php?metodo=nat&ipv4='+$("#download").attr("ipv4");
+		$.post(url, "", function(data) {
+		   var dados = JSON.parse(data);
+			console.log(dados);
+			$("#dados").attr({nat:dados});
+		});
+		
+}
+
 function exportaGrafico(Download, Upload, Inicio, Intervalo, Id, Titulo){
 	var retorno = "<div id='"+Id+"'></div>	\n";
 	retorno += "<script>	\n";
@@ -224,6 +237,101 @@ function exportaGrafico(Download, Upload, Inicio, Intervalo, Id, Titulo){
 	
 	return(retorno);
 }
+
+Highcharts.chart('nat', {
+  chart: {
+    type: 'areaspline',
+    animation: Highcharts.svg, // don't animate in old IE
+    marginRight: 10,
+    events: {
+      load: function () {
+        // set up the updating of the chart each second
+        var series0 = this.series[0];
+
+        var ddd = setInterval(function () {
+          var x = (new Date()).getTime(), // current time
+            y = parseInt($("#dados").attr("nat"));
+			Download.push(y);
+			Hora.push(x);
+          series0.addPoint([x, y], true, true);
+		  if(encerrar > repetir){
+			  clearInterval(ddd);
+		  }
+        }, respawn);
+
+      }
+    }
+  },
+
+  time: {
+    useUTC: false
+  },
+
+  title: {
+    text: 'Uso de Portas CGNAT'
+  },
+
+  accessibility: {
+    announceNewData: {
+      enabled: false,
+      minAnnounceInterval: 15000,
+      announcementFormatter: function (allSeries, newSeries, newPoint) {
+        if (newPoint) {
+          return 'New point added. Value: ' + newPoint.y;
+        }
+        return false;
+      }
+    }
+  },
+
+  xAxis: {
+    type: 'datetime',
+    tickPixelInterval: 150
+  },
+
+  yAxis: {
+    title: {
+      text: 'portas'
+    },
+    plotLines: [{
+      value: 0,
+      width: 1,
+      color: '#808080'
+    }]
+  },
+
+  tooltip: {
+    headerFormat: '<b>{series.name}</b><br/>',
+    pointFormat: '{point.x:%Y-%m-%d %H:%M:%S}<br/>{point.y:.2f}'
+  },
+
+  legend: {
+    enabled: true
+  },
+
+  exporting: {
+    enabled: false
+  },
+
+  series: [{
+    name: 'Portas',
+    data: (function () {
+      // generate an array of random data
+      var data = [],
+        time = (new Date()).getTime(),
+        i;
+
+      for (i = -(repetir-2); i <= 0; i += 1) {
+        data.push({
+          x: time + i * 1000,
+          y: 0
+        });
+      }
+      return data;
+    }())
+  }]
+  
+});
 
 Highcharts.chart('container', {
   chart: {

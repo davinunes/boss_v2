@@ -172,10 +172,10 @@
 	echo '
 	
 	<div class="container">
-	<div class="row">
-	<div class="col s12">
-	<div class="card teal lighten-5">
-	<div class="card-content">
+		<div class="row">
+			<div class="col s12">
+				<div class="card teal lighten-5">
+					<div class="card-content">
 	';
 	if($_SESSION[os]){
 		include "database.php";
@@ -192,19 +192,26 @@
 		
 	}
 	
-	echo '
+	echo '			<div class="row">
+						<div class="col s6">
+							<figure  class="highcharts-figure">
+								  <div style="display:none;" id="container"></div>
+								  <h3 id="endoflife" class="highcharts-description"> </h>
+							</figure>
+						</div>
+						<div class="col s6">
+							<figure  class="highcharts-figure">
+								<div style="display:none;" id="nat"></div>
+							</figure>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col s6" id="onu">
 	
-	<figure class="highcharts-figure">
-  <div id="container"></div>
-  
-  <h3 id="endoflife" class="highcharts-description"> </h>
-  
-</figure>
-</div>
-	<div class="card-content" id="onu">
+						</div>
+					</div>
+					</div>
 	
-	
-	</div>
 
 	';
 	if($_SESSION[os]){
@@ -219,6 +226,7 @@
 	
 	echo '
 	<div class="card-content" id="hist">
+		<p>Buscando histórico de Conexões</p>
 	</div>
 	</div>
 	</div>
