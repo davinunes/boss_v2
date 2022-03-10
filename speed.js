@@ -177,6 +177,7 @@ function iface() {
 		}else{
 			$("#download").attr({status:"online"});
 			$("#download").attr({interface:dados.interface});
+			$("#download").attr({ipv4:dados.ipv4});
 		}
     });
 }

@@ -14,8 +14,6 @@
 			exit;
 	}
 	
-
-	
 	if($_GET['metodo'] == "fibra"){
 		$command = '/usr/bin/python /var/www/ilunne/boss/py/teste.py '.$_GET['OLT'].' '.$_GET['SLOT'].' '.$_GET['PON'].' '.$_GET['ONU'];
 		
@@ -135,6 +133,22 @@
 		echo json_encode($bps);
 		exit;
 	}
+	
+	if($_GET['metodo'] == "nat"){
+		$command = '/usr/bin/python /var/www/ilunne/boss/py/junos.py nat '.$_GET['ipv4'];
+		
+		$output = shell_exec($command);
+		$output = preg_replace('/\\s\\s+/', ' ', $output);
+		$output = explode("\n", $output);
+		$output = explode(" ", $output[1]);
+		// $bps['upload'] = $output[5];
+		// $bps['download'] = $output[11];
+
+		echo json_encode($output[2]);
+		exit;
+	}
+	
+	
 	if(!$_GET['login']){
 		exit;
 	}

@@ -7,7 +7,9 @@ import sys
 metodo = sys.argv[1]
 login = sys.argv[2]
 
-if metodo == "int":
+if metodo == "nat":
+	COMANDO = "show services sessions source-prefix "+login+" count "
+elif metodo == "int":
 	COMANDO = "show subscribers user-name "+login+" | match pp0 "
 else:
 	COMANDO = "show interfaces "+login+" extensive | match bps "
