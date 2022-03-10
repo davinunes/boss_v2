@@ -170,11 +170,12 @@ var imagens_postadas;
 	});
 	
 	//Puxa as OS antigas
-	$("#legacy").click(function(){
-		$(this).remove();
+	$(".legacy").click(function(){
+		let login = $(this).attr("login");
+		console.log(login);
+		return;
 		var dados = {
-			metodo:"1",
-			login : $(this).attr("login")
+			login : login
 		}
 		$.post( "historico.php", dados, function( retorna ) {
 	//		console.log(retorna);
@@ -250,7 +251,7 @@ var imagens_postadas;
 			}
 	
 		});
-		
+		$(this).remove();
 	});
 	
 	$("#reagendar").click(function(){
