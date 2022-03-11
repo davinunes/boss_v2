@@ -127,7 +127,7 @@ echo "<nav class='grey darken-3 no-print'>
 		  
 			<li><a id='mudasenha'><i class='left material-icons'>vpn_key</i></a></li>
 			<li><a id='changeOs'><i class=' left material-icons'>assignment</i>O.S.</a></li>
-			<li><a id='odometro' href='odometros'><i class='left material-icons large'>toys</i>Viagens</a></li>
+			<li><a class='dropdown-trigger btn' href='#' data-target='dropdown1'>Outros</a></li>
 			<li><a id='logout'><i class='left material-icons large'>exit_to_app</i></a></li>
 		  </ul>
 		</div>
@@ -411,4 +411,19 @@ Quantas portas livres restaram na caixa de atendimento?
     </div>
   </div>
   
-
+<!-- Dropdown Structure -->
+  <ul id='dropdown1' class='dropdown-content'>
+    <li><a href="fiberhome/listarONUsOnline.php">OLT FiberHome</a></li>
+	<li><a href="almecegas/">OLT Almecegas</a></li>
+<?php
+	if($adm){
+		echo '<li class="divider" tabindex="-1"></li>';
+		echo '<li><a href="np.php">Promissória</a></li>';
+		echo '<li><a href="remessa/pesquisa.php">Boletos</a></li>';
+		echo '<li><a href="remessa/">Remessa</a></li>';
+		echo '<li><a href="remessa/testes.php">Retorno</a></li>';
+		echo '<li><a href="database.php?metodo=forcaStatus">ForçaStatus</a></li>';
+		echo '<li><a href="nat/">NAT</a></li>';
+	}
+?>
+  </ul>

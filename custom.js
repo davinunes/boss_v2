@@ -8,7 +8,7 @@ var imagem_atual;
 var imagens_postadas;
  
  $(document).ready(function(){
-	 
+	 $('.dropdown-trigger').dropdown();
 	 // ´Ponteiro para só mostrar o botão se a OS não estiver fechada
 	 var permiteImagem = $("#coment").attr("status");
 	 
