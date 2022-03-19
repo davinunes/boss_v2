@@ -1,40 +1,40 @@
-#! /usr/bin/python
-import sys,pexpect
-import getpass
-import time
-# import arrow
+from calendar import c
+import os
+import paramiko
+from datetime import datetime
 
-HOST = '172.24.4.2'
+host2 = '172.24.4.2'
+port2 = 22
+username2 = 'root'
+password2 = 'admin'
 
-#configure here all variables following you system 
-#=======================================================================
-user = 'root'
-password = 'admin'
+def connectSSH():
+  ssh = paramiko.SSHClient()
+  ssh.set_missing_host_key_policy(paramiko.AutoAddPolicy())
+  ssh.connect(host2, port2, username2, password2)
 
+  return ssh
 
-#=======================================================================
-#defining the actual date to be add to the filename
-		
-child = pexpect.spawn ('/usr/bin/ssh -o StrictHostKeyChecking=no '+user+'@'+HOST) #option needs to be a list
-child.setwinsize(10000,10000)
-child.timeout = 150
-child.logfile = sys.stdout #display progress on screen
+def disconnectSSH(ssh):
+  ssh.close()
 
-child.expect('password:') #waiting for password
-child.sendline (password) #sending password
-time.sleep(2)
-child.expect('OLT8PON>')
-time.sleep(1)
+def runCommand(command):
+  ssh = connectSSH()
 
-#go up enable configuration
-child.sendline ('enable\n\n\n')
-time.sleep(2)
-# child.expect('enable')
-# child.sendline ('config') #going to ENABLE configuration
-# child.expect('config')
+  stdin, stdout, stderr = ssh.exec_command(command)
+  lines = stdout.readlines()
 
-#show ont register-statistics all
+  disconnectSSH(ssh)
 
+  return lines
 
-# child.sendline ('interface epon 0/0') #going to ENABLE configuration
-# child.expect('#')
+def excludeBreakLines(text):
+  # get index of break line
+  indexOfBreakLine = text.find('\r')
+  return text[0: indexOfBreakLine]
+
+def getPeers():
+  peers = []
+
+  # log to machine
+  result = runCommand('enable \n configure \n ')
