@@ -1,39 +1,10 @@
 #! /usr/bin/python
-import sys,pexpect
+import sys,pexpect,pxssh
 import getpass
 import time
-# import arrow
 
-HOST = '172.24.4.2'
+s = pxssh.pxssh()
 
-#configure here all variables following you system 
-#=======================================================================
-user = 'root'
-password = 'admin'
+s.login ("172.24.4.2", "root", "admin")
 
-
-#=======================================================================
-#defining the actual date to be add to the filename
-		
-child = pexpect.spawn ('/usr/bin/ssh -o StrictHostKeyChecking=no '+user+'@'+HOST) #option needs to be a list
-child.setwinsize(10000,10000)
-child.timeout = 150
-child.logfile = sys.stdout #display progress on screen
-
-child.expect('password:') #waiting for password
-child.sendline (password) #sending password
-time.sleep(2)
-child.expect('OLT8PON>')
-time.sleep(1)
-
-#go up enable configuration
-child.sendline ('enable') #going to ENABLE configuration
-child.expect('enable')
-child.sendline ('config') #going to ENABLE configuration
-child.expect('config')
-
-#show ont register-statistics all
-
-
-child.sendline ('interface epon 0/0') #going to ENABLE configuration
-child.expect('#')
+s.sendline ('enable')
