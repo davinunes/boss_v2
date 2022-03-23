@@ -11,7 +11,7 @@ password = 'admin'
 
 #=======================================================================
 #defining the actual date to be add to the filename
-data = arrow.now().format('DD-MM-YYYY_HH-mm')
+# data = arrow.now().format('DD-MM-YYYY_HH-mm')
 
 child = pexpect.spawn ('/usr/bin/ssh -o StrictHostKeyChecking=no '+user+'@'+HOST) #option needs to be a list
 child.setwinsize(10000,10000)
@@ -24,17 +24,6 @@ child.expect('OLT8PON>')
 time.sleep(1)
 
 #go up enable configuration
-child.sendline ('enable') #going to ENABLE configuration
-child.interact()
+child.sendline ('enable\n\n\n\n') #going to ENABLE configuration
+# child.interact()
 child.expect('OLT8PON#')
-child.expect('enable')
-child.sendline ('config') #going to ENABLE configuration
-child.expect('config')
-
-
-show ont register-statistics all
-#show ont register-statistics all
-
-
-child.sendline ('interface epon 0/0') #going to ENABLE configuration
-child.expect('#')
