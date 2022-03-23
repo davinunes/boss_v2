@@ -26,4 +26,6 @@ time.sleep(1)
 #go up enable configuration
 child.sendline ('enable\n\n\n\n') #going to ENABLE configuration
 # child.interact()
-child.expect('OLT8PON#')
+child.expect('password:')
+child.expect('enable')
+child.sendline ('enable\n\n\n\n')
