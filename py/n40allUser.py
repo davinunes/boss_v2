@@ -3,8 +3,7 @@ import sys,pexpect
 import getpass
 import time
 # import arrow
-HOST = sys.argv[1]
-NOME = sys.argv[2]
+HOST = "10.77.1.2"
 #configure here all variables following you system 
 #=======================================================================
 user = 'suporte'

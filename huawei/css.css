@@ -1,0 +1,100 @@
+body {
+    -webkit-print-color-adjust: exact;
+}
+
+pre {
+  font-size: 12px;
+}
+.separar table tbody tr{
+  border-top: 3px solid !important;
+}
+.material-icons { 
+  font-size: 14px;
+}
+table {
+	font-size: 12px;
+	border-collapse: collapse;
+	width: 99%;
+	border: 2px solid #666;
+
+}
+thead {
+  background: #ccc url(bar.gif) repeat-x left center;
+  border-top: 1px solid #a5a5a5;
+  border-bottom: 1px solid #a5a5a5;
+}
+
+
+tr:nth-child(even) { 
+  background-color: #edf5ff;
+}
+tr:hover {
+
+  color: #fd3d00;
+}
+thead tr:hover {
+  background-color: transparent;
+  color: inherit;
+}
+
+
+th {
+  font-weight: normal;
+  text-align: left;
+}
+th, td {
+  padding: 0.1em 0.6em;
+}
+
+
+
+
+
+/* Sobre o Spoiler */
+
+.spoiler > input + label:after{
+	content: "+";
+	float: right;
+	font-family: monospace;
+	font-weight: bold;
+}
+.spoiler > input:checked + label:after{
+	content: "-";
+	float: right;
+	font-family: monospace;
+	font-weight: bold;
+}
+.spoiler > input{
+	display:none;
+}
+.spoiler > input + label , .spoiler > .spoiler_body{ 
+	background: #ccc url(bar.gif) repeat-x left center;
+    border: 1px solid #a5a5a5;
+    padding: 2.5px 5px;
+	overflow:hidden;
+	width:98%;
+	box-sizing: border-box;
+	display: inlineblock;
+	position: relative;
+}
+.tt { 
+	background: #ccc url(bar.gif) repeat-x left center;
+    border: 1px solid #a5a5a5;
+    padding: 2.5px 5px;
+	overflow:hidden;
+	width:100%;
+	box-sizing: border-box;
+	display: inlineblock;
+	position: relative;
+}
+.spoiler > input + label + .spoiler_body{
+	display:none;
+}
+.spoiler > input:checked + label + .spoiler_body{
+	display: block;
+}
+.spoiler > .spoiler_body{
+	background: #FFF;
+	border: 1px solid #CCC;
+	border-top: none;
+}
