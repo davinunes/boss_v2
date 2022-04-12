@@ -46,7 +46,4 @@
 	// $output = preg_replace('/\\s\\s+/', ' ', $output[2]);
 	// 
 	// var_dump($mac);
-	
-	
-
 ?>
