@@ -13,17 +13,17 @@ password = 'admin'
 #defining the actual date to be add to the filename
 # data = arrow.now().format('DD-MM-YYYY_HH-mm')
 
-child = pexpect.spawn ('/usr/bin/sshpass -p admin '+user+'@'+HOST) #option needs to be a list
+child = pexpect.spawn ('/usr/bin/sshpass -p admin ssh '+user+'@'+HOST) #option needs to be a list
 child.setwinsize(10000,10000)
 child.timeout = 150
 child.logfile = sys.stdout
 time.sleep(2)
-# child.expect('OLT8PON>')
+child.expect('OLT8PON>')
 time.sleep(1)
 
 #go up enable configuration
-child.sendline ('enable\n\n\n\n') #going to ENABLE configuration
+child.sendline ('enable') #going to ENABLE configuration
 # child.interact()
 child.expect('password:')
 child.expect('enable')
-child.sendline ('enable\n\n\n\n')
+child.sendline ('enable')
