@@ -38,7 +38,12 @@ child.expect('Password:') #waiting enable password
 child.sendline (PASSWORD) #sending enable password 
 
 child.expect('#')
-
+child.sendline ('cd service')
+child.expect('#')
+child.sendline ('terminal length 0')
+child.expect('#')
+child.sendline ('cd ..')
+child.expect('#')
 
 
 child.sendline ('cd onu')
