@@ -153,7 +153,7 @@ foreach($onu as $card){
 				$plune = "";
 			}
 			
-			if($estaOnline and $estaCancelado)){
+			if($estaOnline and $estaCancelado){
 				// Contrato cancelado e ONU Online
 				$dica = "Agendar retirada do material?";
 			}else{
