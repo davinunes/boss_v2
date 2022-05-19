@@ -16,14 +16,14 @@ $output = explode("-----  ONU Auth Table, ", $output[0]);
 // Vamos montar um Array com os dados
 foreach($output as $a){
 	if(strlen($a) < 10) continue;
-	// Separo o cabe√ßalho da lista
+	// Separo o cabeÁalho da lista
 	$a = explode("--- -------------- -- --- --- ------------ ---------- ----------------------------------------", $a);
 	$spi = $a[0];
 	$lista = $a[1];
 	
 	// echo "<pre>".var_dump($spi)."</pre>";
 	
-	//trabalho o cabe√ßalho
+	//trabalho o cabeÁalho
 	$spi = explode(" -----", $spi);
 	$spi = explode(", ", $spi[0]);
 	$slot 	=  (explode(" = ", $spi[0]))[1];
@@ -32,7 +32,7 @@ foreach($output as $a){
 	
 	// Agora eu sei o slot, a Pon e a Quatidade de Itens de cada PON
 	
-	// √â hora de trabalhar a lista de ONU
+	// … hora de trabalhar a lista de ONU
 	$lista = explode("\n", $lista);
 	
 	$onu[$slot][card] = $slot;
@@ -43,7 +43,7 @@ foreach($output as $a){
 		$linha = preg_replace('/\\s\\s+/', ' ', $a);
 		$linha = explode(" ", $linha);
 		
-		// Organizo o cat√°logo
+		// Organizo o cat·logo
 		$item[num] = preg_replace('/\s+/', '', $linha[0]);
 		$item[ost] = $linha[4];
 		$item[mac] = $linha[5];
@@ -60,7 +60,7 @@ foreach($output as $a){
 		$item[ixc_address] = $ixc[slotno].":".$ixc[ponno].":".$ixc[onu_numero];
 		$item[olt_address] = $slot.":".$pon.":".$item[num];
 		
-		// Fa√ßo a contagem de ONU online e Offline nessa lista
+		// FaÁo a contagem de ONU online e Offline nessa lista
 		if($item[ost] == "up"){
 			$online++;
 		}else{
@@ -105,6 +105,9 @@ foreach($onu as $card){
 		echo "\t<tr class='indigo lighten-4 togglavel2 $superbloco' swap='$bloco'><td colspan='10'>Porta $porta[porta] com $porta[quantidade] ONT sendo $porta[onns] up/$porta[offs] down </td></tr>\n";
 		echo "<td class='indigo lighten-4 $bloco $superbloco' rowspan='$altura'></td>";
 		foreach($porta[lista] as $ont){
+			
+			$trupa = $bloco."unidade".$ont[num];
+			
 			if($ont[ost] == "up"){
 				$estaOnline=true;
 				$classe = 'green lighten-5 isup';
@@ -136,16 +139,36 @@ foreach($onu as $card){
 				$migrada = false;
 			}
 			
+			if(!$estaCancelado and !$semlogin and $migrada){
+				// Contrato ativo, Tem login associado e est· diferente no sistema
+				$sincronizar = "<a class='btn update' trupa='$trupa'  pon='$ont[olt_address]' login = '$ont[login]' mac='$ont[mac]'>Atualizar no IXC</a>";
+			}else{
+				$sincronizar = "";
+			}
+			
+			if(!$estaOnline and ($semlogin or $estaCancelado)){
+				// onu offline e nem tem login
+				$plune = "<a class='btn red plune' trupa='$trupa' mac='$ont[mac]' olt='$_GET[OLT]' >Deletar</a>";
+			}else{
+				$plune = "";
+			}
+			
+			if($estaOnline and $estaCancelado)){
+				// Contrato cancelado e ONU Online
+				$dica = "Agendar retirada do material?";
+			}else{
+				$dica = "";
+			}
+			
 			
 			echo "\t\t
-					<tr class='$classe $ativo  $bloco' >
+					<tr class='$classe $ativo  $bloco' id='$trupa'>
 					<td title='Login'>$ont[login]</td>
 					<td title='MAC'>$ont[mac]</td>
-					<td title='A√ß√£o'>
-						<a class='btn plune' mac='$ont[mac]' olt='$_GET[OLT]' >Deletar</a>
-						<a class='btn update' >Atualizar no IXC</a>
-						<a class='btn update'></a>
-						<a class='btn update'></a>
+					<td title='AÁ„o'>
+						$plune
+						$sincronizar
+						$dica
 					</td>
 					<td title='Obs'>$cancelado</td>
 					<td title='Vlan'>$ont[vlan]</td>
