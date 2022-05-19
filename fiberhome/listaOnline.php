@@ -47,12 +47,14 @@ foreach($output as $a){
 		$item[mac] = $linha[5];
 		
 		$ixc = check_onu($item[mac]);
+		echo "<pre>".var_dump($linha)."</pre>";
 		$status = check_precontrato($ixc[id_contrato]);
 		
 		$item[login] = $ixc[login];
 		$item[perfil] = $ixc[id_perfil];
 		$item[vlan] = $ixc[vlan];
 		$item[ativo] = $status;
+		$item[ixc_address] = $ixc[ponno].":".$ixc[slotno].":".$ixc[onu_numero];
 		
 		// Faço a contagem de ONU online e Offline nessa lista
 		if($item[ost] == "up"){
@@ -100,24 +102,38 @@ foreach($onu as $card){
 		echo "<td class='indigo lighten-4 $bloco $superbloco' rowspan='$altura'></td>";
 		foreach($porta[lista] as $ont){
 			if($ont[ost] == "up"){
+				$estaOnline=true;
 				$classe = 'green lighten-5 isup';
 				$cancelado = "<i class='material-icons'>cloud_done</i>";
 			}else{
+				$estaOnline=false;
 				$classe = 'grey lighten-2';
 				$cancelado = "<i class='material-icons'>cloud_off</i>";
 			}
 			
 			if($ont[ativo] == "I"){
+				$estaCancelado = true;
 				$ativo = 'red-text text-darken-4';
 				$cancelado = "CONTRATO CANCELADO";
 			}else{
 				$ativo = '';
+				$estaCancelado = false;
+			}
+			
+			if($ont[login] == ""){
+				$semlogin = true;
+			}else{
+				$semlogin = false;
 			}
 			
 			echo "\t\t
 					<tr class='$classe $ativo  $bloco' >
 					<td title='Login'>$ont[login]</td>
 					<td title='MAC'>$ont[mac]</td>
+					<td title='Ação'>
+						<a class='btn plune' mac='$ont[mac]' olt='$_GET[OLT]' >Deletar</a>
+						<a class='btn update' >Atualizar no IXC</a>
+					</td>
 					<td title='Obs'>$cancelado</td>
 					<td title='Vlan'>$ont[vlan]</td>
 					<td title='Perfil'>$ont[perfil]</td>
