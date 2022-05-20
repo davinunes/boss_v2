@@ -59,7 +59,7 @@ foreach($output as $a){
 		$item[ativo] = $status;
 		$item[ixc_address] = $ixc[slotno].":".$ixc[ponno].":".$ixc[onu_numero];
 		$item[olt_address] = $slot.":".$pon.":".$item[num];
-		$item[vlanPadraoOlt] = $_GET[vlan];
+		$item[vlanPadraoOlt] = $_GET[VLANOLT];
 		
 		// Faço a contagem de ONU online e Offline nessa lista
 		if($item[ost] == "up"){
@@ -148,17 +148,20 @@ foreach($onu as $card){
 			
 			if(!$estaCancelado and !$semlogin and $migrada and !$vlanDiverge){
 				// Contrato ativo, Tem login associado e está diferente no sistema
-				$sincronizar = "<a class='btn update' trupa='$trupa'  pon='$ont[olt_address]' login = '$ont[login]' mac='$ont[mac]'>Atualizar no IXC</a>";
+				$sincronizar = "<a class='btn update' trupa='$trupa'  pon='$ont[olt_address]' login = '$ont[login]' mac='$ont[mac]'>Corrigir no IXC $ont[ixc_address] -> $ont[olt_address]</a>";
 			}else{
 				$sincronizar = "";
 			}
 			
-			if(!$estaOnline and ($semlogin or $estaCancelado)){
-				// onu offline e nem tem login
+			
+			
+			if(!$estaOnline and ($semlogin or $estaCancelado or $vlanDiverge)){
+				// onu offline e nem tem login ou a vlan é diferente
 				$plune = "<a class='btn red plune' trupa='$trupa' mac='$ont[mac]' olt='$_GET[OLT]' >Deletar</a>";
 			}else{
 				$plune = "";
 			}
+			
 			
 			if($estaOnline and $estaCancelado){
 				// Contrato cancelado e ONU Online
@@ -172,13 +175,13 @@ foreach($onu as $card){
 					<tr class='$classe $ativo  $bloco' id='$trupa'>
 					<td title='Login'>$ont[login]</td>
 					<td title='MAC'>$ont[mac]</td>
-					<td title='Ação'>
+					<td title='Ação' ixcaddr='$ont[ixc_address]' oltaddr='$ont[olt_address]'>
 						$plune
 						$sincronizar
 						$dica
 					</td>
 					<td title='Obs'>$cancelado</td>
-					<td title='Vlan'>$ont[vlan]</td>
+					<td title='Vlan' vlanOlt='$ont[vlanPadraoOlt]'>$ont[vlan]</td>
 					<td title='Perfil'>$ont[perfil]</td>
 					<td title='Status'>$ont[ost]</td>
 					<td title='Numero'>$ont[num]</td>
