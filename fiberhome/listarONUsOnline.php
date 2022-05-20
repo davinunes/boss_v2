@@ -130,12 +130,12 @@ box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
 <div class='row'>
 	<div class="input-field col s6 m6">
 	<select id='OLT' name='OLT'>
-	  <option value="172.21.2.2" selected>Sede</option>
-	  <option value="10.168.169.2">Incra 8</option>
-	  <option value="172.21.1.2">Vendinha</option>
-	  <option value="172.21.3.2">Monte Alto</option>
-	  <option value="10.169.66.10">Morada dos Pássaros</option>
-	  <option value="10.169.67.2">Padre Lúcio</option>
+	  <option vlan="1000" value="172.21.2.2" selected>Sede</option>
+	  <option vlan="3041" value="10.168.169.2">Incra 8</option>
+	  <option vlan="3042" value="172.21.1.2">Vendinha</option>
+	  <option vlan="3044" value="172.21.3.2">Monte Alto</option>
+	  <option vlan="3046" value="10.169.66.10">Morada dos Pássaros</option>
+	  <option vlan="3048" value="10.169.67.2">Padre Lúcio</option>
 	</select>
 	<label>OLT</label>
 	</div>

@@ -59,6 +59,7 @@ foreach($output as $a){
 		$item[ativo] = $status;
 		$item[ixc_address] = $ixc[slotno].":".$ixc[ponno].":".$ixc[onu_numero];
 		$item[olt_address] = $slot.":".$pon.":".$item[num];
+		$item[vlanPadraoOlt] = $_GET[vlan];
 		
 		// Faço a contagem de ONU online e Offline nessa lista
 		if($item[ost] == "up"){
@@ -127,6 +128,12 @@ foreach($onu as $card){
 				$estaCancelado = false;
 			}
 			
+			if($ont[vlan] != $ont[vlanPadraoOlt]){
+				$vlanDiverge = true;
+			}else{
+				$vlanDiverge = false;
+			}
+			
 			if($ont[login] == ""){
 				$semlogin = true;
 			}else{
@@ -139,7 +146,7 @@ foreach($onu as $card){
 				$migrada = false;
 			}
 			
-			if(!$estaCancelado and !$semlogin and $migrada){
+			if(!$estaCancelado and !$semlogin and $migrada and !$vlanDiverge){
 				// Contrato ativo, Tem login associado e está diferente no sistema
 				$sincronizar = "<a class='btn update' trupa='$trupa'  pon='$ont[olt_address]' login = '$ont[login]' mac='$ont[mac]'>Atualizar no IXC</a>";
 			}else{

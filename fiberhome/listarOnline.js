@@ -10,10 +10,11 @@ $(document).on('click', '#btn', function(){
 	
 	
     olt = $("#OLT").val();
+	vlan = $("#OLT option:selected").attr("vlan");
 	slot = $("#SLOT").val();
 	pon = $("#PONN").val();
 	
-	url = 'listaOnline.php?OLT='+olt+'&SLOT='+slot+'&PONN='+pon;
+	url = 'listaOnline.php?OLT='+olt+'&SLOT='+slot+'&PONN='+pon+'&VLANOLT='+vlan;
 	
 	$.post(url, "", function(data){
 	   
