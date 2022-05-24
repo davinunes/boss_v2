@@ -71,6 +71,8 @@ function dbMsg($termo){ # Lê os Veiculos da Tabela
 	$sql .=" left join su_oss_evento ev on ev.id = m.id_evento";
 	$sql .=" where ";
 	$sql .=" 	id_chamado='$termo' ";
+	
+	// var_dump($sql);
 
 	$result	= DBExecute($sql);
 
@@ -201,7 +203,7 @@ function atrasados($contrato){ # Verifica quais clientes tem o Parâmetro Força
 }
 
 function dbOs($termo){ # Lê os Veiculos da Tabela
-//	echo $sql;
+	// 
 	
 	$sql  ="select ";
 	$sql .="	os.id as OS, ";
@@ -225,6 +227,7 @@ function dbOs($termo){ # Lê os Veiculos da Tabela
 	$sql .="left join usuarios op on op.funcionario = tec.id ";
 	$sql .="where ";
 	$sql .="	os.id='$termo' ";
+	// echo $sql;
 
 	$result	= DBExecute($sql);
 
@@ -265,7 +268,7 @@ function mensagens($sql){ // itera as linhas da tabela
 	foreach($sql as $a){
 		$linhas++;
 		$a['Operador'] =  mb_convert_case($a['Operador'], MB_CASE_TITLE, "ISO-8859-1");
-//		var_dump($a);
+		// var_dump($a);
 		if($a['img'] != ""){
 			$r.= "\t<li class='collection-item avatar'>
 			\n\t<img src='$a[img]' alt='' class='circle right'>

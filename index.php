@@ -84,6 +84,13 @@ $func = $_SESSION[func];
 $tecnico = mb_convert_case($_SESSION[nome], MB_CASE_TITLE, "ISO-8859-1");
 $adm = $_SESSION[grupo] <= 2 ? true : false;
 $dados = dbOs($os);
+if(!$dados){
+	// echo "<div id='listadodia' status='1'>";
+	// include "os.php";
+	// echo "&#160;";
+	// exit;
+}
+
 $dados = $dados[0];
 $agenda = explode(" ",$dados[Agenda]);
 
@@ -133,7 +140,7 @@ echo "<nav class='grey darken-3 no-print'>
 		</div>
 	</nav>";
 	
-if(!isset($_SESSION[os])){
+if(!isset($_SESSION[os]) or !$dados){
 	echo "<div id='listadodia' status='1'>";
 	include "os.php";
 	echo "&#160;";
