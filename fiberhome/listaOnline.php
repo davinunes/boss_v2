@@ -104,7 +104,7 @@ foreach($onu as $card){
 		$bloco = "card$card[card]pon$porta[porta]";
 		$altura = $porta[quantidade] +1;
 		echo "\t<tr class='indigo lighten-4 togglavel2 $superbloco' swap='$bloco'><td colspan='10'>Porta $porta[porta] com $porta[quantidade] ONT sendo $porta[onns] up/$porta[offs] down </td></tr>\n";
-		echo "<td class='indigo lighten-4 $bloco $superbloco' rowspan='$altura'></td>";
+		// echo "<td class='indigo lighten-4 $bloco $superbloco' rowspan='$altura'></td>";
 		foreach($porta[lista] as $ont){
 			
 			$trupa = $bloco."unidade".$ont[num];

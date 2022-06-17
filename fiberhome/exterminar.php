@@ -3,14 +3,14 @@
 	include "database.php";
 	
 	if(isset($_GET[olt]) and isset($_GET[mac])){
-		echo "<div class='texto' style='/*display: none;*/'><pre>";
+		echo "<pre>";
 		$command = '/usr/bin/python /var/www/ilunne/boss/py/extermina.py '.$_GET[olt].' '.$_GET[mac];
 		
 		$output = shell_exec($command);
 		
 		var_dump($output);
 		
-		echo "</pre></div>";
+		echo "</pre>";
 		
 		if(isset($_GET[os]) and isset($_GET[idx])){
 			

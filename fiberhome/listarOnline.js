@@ -98,7 +98,7 @@ $(document).on('click', '.prune', function(){
 			console.log(aba);
 			M.toast({html: aba, classes: 'rounded'});
 			$(trupa).remove();
-			tele("ONU "+rmac+" foi deletada da OLT: "+rolt);
+			tele("ONU "+rmac+" foi deletada da OLT");
 		});
 	}
 });
