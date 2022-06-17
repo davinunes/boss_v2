@@ -10,11 +10,16 @@
 		
 		var_dump($output);
 		
-		$msg = "Exclui do sistema a ONU cujo MAC $_GET[mac] estava associado ao login $_GET[login]";
-		// $oba = telegram($_GET[nome]." - ".$msg);
-		fecharOs($_GET[os], $_GET[tecnico], $msg);
+		if(isset($_GET[os]) and isset($_GET[idx])){
+			
 		
-		delete_onu($_GET[idx]);
+			$msg = "Exclui do sistema a ONU cujo MAC $_GET[mac] estava associado ao login $_GET[login]";
+			// $oba = telegram($_GET[nome]." - ".$msg);
+			fecharOs($_GET[os], $_GET[tecnico], $msg);
+			
+			delete_onu($_GET[idx]);
+		
+		}
 		
 	}
 ?>
