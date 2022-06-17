@@ -8,7 +8,7 @@
 		
 		$output = shell_exec($command);
 		
-		var_dump($output);
+		echo $output;
 		
 		echo "</pre>";
 		
