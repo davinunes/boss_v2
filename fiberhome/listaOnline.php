@@ -157,7 +157,7 @@ foreach($onu as $card){
 			
 			if(!$estaOnline and ($semlogin or $estaCancelado or $vlanDiverge)){
 				// onu offline e nem tem login ou a vlan é diferente
-				$plune = "<a class='btn red plune' trupa='$trupa' mac='$ont[mac]' olt='$_GET[OLT]' >Deletar</a>";
+				$plune = "<a class='btn red prune' trupa='$trupa' mac='$ont[mac]' login='$ont[login]'  olt='$_GET[OLT]' >Deletar</a>";
 			}else{
 				$plune = "";
 			}

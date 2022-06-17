@@ -82,4 +82,43 @@ $(document).on('click', '#isup', function(){
     
 });
 
+$(document).on('click', '.prune', function(){
+    rmac = $(this).attr('mac');
+	rolt = $(this).attr('olt');
+	trupa = "#"+$(this).attr('trupa');
+	
+	rurl = "exterminar.php?olt="+rolt+"&mac="+rmac;
+	console.log(rurl);
+	
+	var exterminar = confirm('Você tem certeza que quer excluir a ONU '+rmac+' da OLT?');
+	if(exterminar){
+		console.log(rurl);
+		M.toast({html: 'Excluindo, Aguarde um instante!!!', classes: 'rounded'});
+		$.post(rurl, "", function(aba){
+			console.log(aba);
+			M.toast({html: aba, classes: 'rounded'});
+			$(trupa).remove();
+			tele("ONU "+rmac+" foi deletada da OLT: "+rolt);
+		});
+	}
+});
+
+$(document).on('click', '.update', function(){
+    rmac = $(this).attr('mac');
+	pon = $(this).attr('pon');
+	
+	M.toast({html: 'Esse botão Ainda não Funciona. No futuro irá corrigir no ixc o endereço correto da ONU: '+pon, classes: 'rounded'});
+	
+});
+
+function tele(msg){
+	msg = encodeURIComponent(msg);
+	url = 'database.php?metodo=telegram&mensagem='+msg;
+	console.log(url);
+	$.post(url, "", function(dtx){
+		console.log(dtx);
+	});
+}
+
+
 // $("select#SLOT option")[0].text.split("[")[1].split("]")
