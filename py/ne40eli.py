@@ -15,7 +15,7 @@ password = 'NetWorkEducation#2022'
 #defining the actual date to be add to the filename
 
 child = pexpect.spawn ('/usr/bin/ssh -o StrictHostKeyChecking=no -p 2200 '+user+'@'+HOST) #option needs to be a list
-child.setwinsize(10000,10000)
+child.setwinsize(10000,10000) 
 child.timeout = 150
 child.logfile = sys.stdout #display progress on screen
 child.expect('Enter password:') #waiting for password
